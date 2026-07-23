@@ -10,6 +10,8 @@ const Footer = () => {
     { path: "/for-adoption", label: "Adoção e Apadrinhamento" },
     { path: "/donations", label: "Como Ajudar" },
     { path: "/volunteering", label: "Voluntariado" },
+    { path: "/extension-project", label: "Projeto de Extensão" },
+    { path: "/sebo", label: "Sebo da Caramelos" },
     { path: "/shop", label: "Loja" },
     // { path: "/events", label: "Eventos" },
     { path: "/contact", label: "Contato" },
@@ -33,15 +35,16 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-right">
-        {[0, 4].map((startIndex) => (
-          <nav key={startIndex} className="nav-footer">
-            {navLinks
-              .slice(startIndex, startIndex + 4)
-              .map(({ path, label, bold }) => (
-                <Link key={path} to={path} className="link nav-footer-link">
-                  {bold ? <b>{label}</b> : label}
-                </Link>
-              ))}
+        {[
+          navLinks.slice(0, 5),
+          navLinks.slice(5),
+        ].map((links, i) => (
+          <nav key={i} className="nav-footer">
+            {links.map(({ path, label, bold }) => (
+              <Link key={path} to={path} className="link nav-footer-link">
+                {bold ? <b>{label}</b> : label}
+              </Link>
+            ))}
           </nav>
         ))}
       </div>
