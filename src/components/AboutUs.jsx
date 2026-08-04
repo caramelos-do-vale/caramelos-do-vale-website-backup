@@ -1,4 +1,3 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -18,14 +17,18 @@ const AboutUs = () => {
         <div className="description">
           <h1>Sobre Nós 🐾</h1>
           <p>
-            Caramelos do Vale é uma ONG dedicada à proteção e ao cuidado de
-            animais em situação de abandono e vulnerabilidade. Fundada com o
-            objetivo de criar um mundo mais compassivo e responsável, nossa
-            missão é resgatar, tratar e encontrar lares amorosos para animais
-            que precisam de ajuda. Com o apoio de voluntários dedicados e
-            doadores generosos, seguimos firmes em nossa luta para dar voz e
-            esperança a esses seres indefesos, promovendo ações e campanhas que
-            fazem a diferença.
+            A Caramelos do Vale é uma associação formada por uma rede de alunas
+            e servidoras da UFRGS, dedicada ao resgate e ao cuidado de cães
+            abandonados no Campus do Vale. Em 2025, formalizou-se como Projeto
+            de Extensão, aproximando-se da comunidade universitária por meio do
+            voluntariado convertido em horas de extensão. Os cães resgatados,
+            muitas vezes, chegam em condições precárias: doentes, infestados de
+            pulgas e carrapatos e, em geral, não castrados. A atuação do projeto
+            também se estende à comunidade próxima ao campus, o Jardim
+            Universitário, onde circulam animais sem tutores e em situação de
+            vulnerabilidade. Todo o trabalho é voluntário e mantido
+            exclusivamente por doações espontâneas, realização de eventos e
+            venda de produtos.
           </p>
         </div>
       </section>
@@ -34,7 +37,7 @@ const AboutUs = () => {
           <div>
             <FontAwesomeIcon icon={faHeart} size="4x" className="icon" />
             <p>
-              <b>89</b>
+              <b>+160</b>
             </p>
             <p>Adoções</p>
           </div>
@@ -45,14 +48,14 @@ const AboutUs = () => {
               className="icon"
             />
             <p>
-              <b>172</b>
+              <b>+280</b>
             </p>
             <p>Resgates</p>
           </div>
           <div>
             <FontAwesomeIcon icon={faHouse} size="4x" className="icon" />
             <p>
-              <b>27</b>
+              <b>+30</b>
             </p>
             <p>Animais atualmente em nossos cuidados</p>
           </div>
@@ -72,43 +75,17 @@ const AboutUs = () => {
           />
           <div className="description">
             <p>
-              Essa dupla foi responsável pela formação do grupo, e o nome
-              "Caramelos do Vale" é em homenagem a eles. Há alguns anos, eles
-              apareceram no campus do Vale da UFRGS. Ambos são castrados,
-              vacinados, e já foram levados ao veterinário algumas vezes.
-              Recebem ração diariamente e usam coleiras anti pulgas e
-              carrapatos. Embora eles sejam um sucesso na UFRGS, estão
-              disponíveis para uma adoção conjunta.
+              O Lobo e a Loba foram responsáveis pelo surgimento da Caramelos do
+              Vale em 2022. Em um campus praticamente vazio por causa da
+              pandemia, essa dupla de prováveis irmãos circulava em busca de
+              comida e atenção. O nome Caramelos do Vale é em homenagem a eles,
+              que hoje seguem sob cuidados da ONG, mas agora em um lar
+              temporário cheio de amor, com todos os cuidados e a segurança que
+              eles merecem ter. Por vezes, eles visitam o campus em dias de
+              cafés, fazendo a maior festa.
             </p>
           </div>
         </div>
-      </section>
-      <section className="operation large-margin">
-        <h2>Como Atuamos</h2>
-        <p>
-          Há mais de dois anos estamos lutando para dar um futuro melhor aos
-          cães que são vítimas de abandono na região do Campus do Vale da UFRGS
-          - que são muitos! Também trabalhamos de forma intensa nas enchentes de
-          Porto Alegre de maio/2024, onde fomos muito além da nossa área de
-          atuação.
-        </p>
-        <p>
-          Ao todo, já acolhemos e mudamos o futuro de mais de 150 animais.
-          Também construímos do zero um espaço de acolhimento para abrigar cães
-          provisória ou definitivamente, com todo conforto e cuidado que eles
-          merecem.
-        </p>
-        <p>
-          Nossa atuação depende da ajuda de voluntários, parceiros e doadores
-          que compartilham da nossa causa. Além de resgates, realizamos eventos
-          de adoção e campanhas de arrecadação de ração e medicamentos.
-        </p>
-        <p>
-          Com a ajuda de uma equipe dedicada de voluntários e parceiros,
-          trabalhamos sem descanso para garantir que cada animal receba o
-          cuidado necessário. Para nós, cada vida importa, e cada adoção é uma
-          vitória para todos💛.
-        </p>
       </section>
       <section className="join-us large-margin">
         <div>
@@ -120,6 +97,20 @@ const AboutUs = () => {
             de muitos animais e fazer do mundo um lugar mais justo e seguro para
             todos.
           </p>
+          <p>
+            Você também pode fazer parte dessa corrente de amor! Seja adotando,
+            voluntariando, apadrinhando um cão ou fazendo uma doação, toda ajuda
+            é fundamental para continuarmos nosso trabalho. Juntos, podemos
+            transformar a realidade de muitos animais e fazer do mundo um lugar
+            mais justo e seguro para eles.
+          </p>
+          <p>
+            Nossas chaves pix para doações espontâneas são (em nome de
+            Associação Caramelos do Vale - Pagbank):
+          </p>
+          <p>- e-mail: pix@caramelosdovale.com.br</p>
+          <p>- CNPJ: 56.319.404/0001-05</p>
+
           <picture>
             <img
               className="image3 img-round img-join-us"
@@ -153,7 +144,7 @@ const AboutUs = () => {
           <img
             className="image7"
             src="join-us5.jpg"
-            alt="Foto dos nossos queridos voluntários do projeto no espaço que abriga os cães do projeto"
+            alt="Foto do Chocotone, um dos cachorros resgatados pelo projeto"
           />
         </picture>
       </section>

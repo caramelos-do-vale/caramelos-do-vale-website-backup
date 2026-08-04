@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
@@ -6,14 +6,12 @@ import "./styles.css";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import AboutUs from "./components/AboutUs.jsx";
-import Volunteering from "./components/Volunteering.jsx";
 import Contact from "./components/Contact.jsx";
 import Donations from "./components/Donations.jsx";
 import ForAdoption from "./components/ForAdoption.jsx";
 import PetDetails from "./components/PetDetails.jsx";
 import Shop from "./components/Shop.jsx";
 import Home from "./components/Home.jsx";
-import Events from "./components/Events.jsx";
 import ExtensionProject from "./components/ExtensionProject.jsx";
 import Sebo from "./components/Sebo.jsx";
 
@@ -68,10 +66,8 @@ const App = () => {
             <Route path="for-adoption" element={<ForAdoption />} />
             <Route path="/for-adoption/:id" element={<PetDetails />} />
             <Route path="/shop" element={<Shop />} />
-            {/* <Route path="/events" element={<Events />} /> */}
             <Route path="/extension-project" element={<ExtensionProject />} />
             <Route path="/sebo" element={<Sebo />} />
-            <Route path="/volunteering" element={<Volunteering />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
           <Footer />

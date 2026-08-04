@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,6 +16,30 @@ const Donations = () => {
       <section className="large-margin">
         <div className="donation">
           <div className="donation-title">
+            <h2>Seja um Extensionista</h2>
+            <img
+              className="logo"
+              src="logo-EXTENSAO.png"
+              alt="Imagem do logo do projeto de extensão"
+            />
+          </div>
+          <div className="donation-description">
+            <p>
+              Se você é aluno UFRGS e deseja unir o amor aos animais com horas
+              de extensão, você pode fazer parte do Projeto de Extensão
+              Caramelos do Vale e converter seu trabalho voluntário em horas no
+              seu currículo acadêmico.
+            </p>
+            <a className="button-primary" href="/extension-project">
+              Saiba mais
+              <FontAwesomeIcon icon={faArrowRight} className="button-icon" />
+            </a>
+          </div>
+        </div>
+      </section>
+      <section className="large-margin">
+        <div className="donation">
+          <div className="donation-title">
             <h2>Doações recorrentes através da plataforma APOIA.se</h2>
             <img
               className="logo"
@@ -26,7 +49,7 @@ const Donations = () => {
           </div>
           <div className="donation-description">
             <p>
-              Agora você pode ajudar também por meio de doação recorrente na
+              Você pode ajudar também por meio de doação recorrente na
               plataforma Apoia.se. Estamos com uma campanha de contribuição
               mensal, que vai nos ajudar a garantir o mínimo em caixa para
               cuidar dos nossos resgatados e cobrir nossas despesas gerais.
@@ -94,9 +117,9 @@ const Donations = () => {
               className="button-primary"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfSMe661hJb0e4IzO7U-Xp-cN7bgngpna8lLutbdKjt6onCQA/viewform"
+              href="https://www.instagram.com/caramelosdovale"
             >
-              Formulário para lar temporário
+              Acompanhe os resgates no nosso Instagram
               <FontAwesomeIcon icon={faArrowRight} className="button-icon" />
             </a>
           </div>
@@ -120,13 +143,8 @@ const Donations = () => {
               que não possa adotar, essa é uma maneira de fazer a diferença na
               vida de um animal resgatado.
             </p>
-            <a
-              className="button-primary"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://wa.me/5551991084114?text=Olá,%20gostaria%20de%20apadrinhar%20um%20animal%20da%20Associação%20Caramelos%20do%20Vale"
-            >
-              Fale com a gente por WhatsApp
+            <a className="button-primary" href="/for-adoption">
+              Conheça os caramelos disponíveis para apadrinhamento
               <FontAwesomeIcon icon={faArrowRight} className="button-icon" />
             </a>
           </div>
@@ -183,8 +201,11 @@ const Donations = () => {
               valor arrecadado com as vendas é revertido para ajudar no cuidado
               e tratamento dos nossos peludos.
             </p>
-            <Link to="https://docs.google.com/forms/d/e/1FAIpQLSd2H8sZQE5ytRxgycFujwL8XaOm2dwWag1b4_kT7hytksjvcA/viewform?usp=send_form" className="link button-primary">
-              Formulário para voluntários
+            <Link
+              to="https://www.instagram.com/caramelosdovale"
+              className="link button-primary"
+            >
+              Fique por dentro dos nossos eventos
               <FontAwesomeIcon icon={faArrowRight} className="button-icon" />
             </Link>
           </div>
