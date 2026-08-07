@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -8,11 +7,9 @@ const Header = ({ menuToggleHandler, mobileMenu, currentLocation }) => {
     { path: "/about-us", label: "Sobre Nós" },
     { path: "/for-adoption", label: "Adoção e Apadrinhamento", isParent: true },
     { path: "/donations", label: "Como Ajudar" },
-    { path: "/volunteering", label: "Voluntariado" },
     { path: "/extension-project", label: "Projeto de Extensão" },
     { path: "/sebo", label: "Sebo da Caramelos" },
     { path: "/shop", label: "Loja" },
-    // { path: "/events", label: "Eventos" },
     { path: "/contact", label: "Contato" },
   ];
 

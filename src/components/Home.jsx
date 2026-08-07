@@ -13,7 +13,7 @@ import {
 const fetchPetsInfo = async () => {
   const supabaseConnection = createClient(
     import.meta.env.VITE_SUPABASE_URL,
-    import.meta.env.VITE_SUPABASE_KEY
+    import.meta.env.VITE_SUPABASE_KEY,
   );
 
   const { data, error } = await supabaseConnection
@@ -33,13 +33,13 @@ const fetchPetsInfo = async () => {
 
 const HERO_IMAGES = [
   {
-    link: 'https://www.instagram.com/caramelosdovale/',
-    src: "home2New.png",
+    link: "https://www.instagram.com/caramelosdovale/",
+    src: "home1.png",
     alt: "Foto de animal resgatado e abrigado pelo projeto. Acompanhe os nossos eventos, novidades e muito mais pelas nossas redes sociais.",
   },
   {
-    link: 'https://docs.google.com/forms/d/e/1FAIpQLSd2H8sZQE5ytRxgycFujwL8XaOm2dwWag1b4_kT7hytksjvcA/viewform?usp=send_form',
-    src: "home3New.png",
+    link: "https://docs.google.com/forms/d/e/1FAIpQLSd2H8sZQE5ytRxgycFujwL8XaOm2dwWag1b4_kT7hytksjvcA/viewform?usp=send_form",
+    src: "home2.png",
     alt: "Foto de outro animal resgatado e abrigado pelo projeto. Inscreva-se como voluntário preenchendo o formulário!",
   },
 ];
@@ -67,7 +67,11 @@ const Home = () => {
 
   return (
     <>
-      <a href={HERO_IMAGES[heroIndex].link} target="_blank" rel="noopener noreferrer">
+      <a
+        href={HERO_IMAGES[heroIndex].link}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
           className="home-main-img"
           src={HERO_IMAGES[heroIndex].src}
@@ -84,11 +88,11 @@ const Home = () => {
           <div className="description-2">
             <h2>Conheça a Associação Caramelos do Vale</h2>
             <p>
-              A Associação Caramelos do Vale atua resgatando, tratando e
-              encaminhando para adoção animais abandonados no Campus do Vale da
-              UFRGS, em Porto Alegre. Somos um grupo de voluntários formado
-              majoritariamente por estudantes e servidores da universidade,
-              embora atuemos de forma independente à instituição.
+              A Caramelos do Vale é uma associação formada por uma rede de
+              alunas e servidoras da UFRGS, dedicada ao resgate e ao cuidado de
+              cães abandonados no Campus do Vale. Em 2025, formalizou-se como
+              Projeto de Extensão, aproximando-se da comunidade universitária
+              por meio do voluntariado convertido em horas de extensão.
             </p>
             <Link to="/about-us" className="button-primary xsmall-margin">
               Veja mais
@@ -97,9 +101,9 @@ const Home = () => {
           </div>
         </section>
         <section className="large-margin">
-          <h2>Já abrigamos e cuidamos de:</h2>
+          <h2>Já abrigamos e cuidamos de mais de:</h2>
           <div className="xsmall-margin">
-            <h1 className="home-pets-number">172</h1>
+            <h1 className="home-pets-number">280</h1>
             <h2>animais</h2>
           </div>
         </section>

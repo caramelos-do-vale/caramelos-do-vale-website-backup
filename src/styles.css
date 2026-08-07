@@ -240,7 +240,7 @@ img {
 }
 
 .image7 {
-  width: 60%;
+  width: 40%;
   max-width: 1500px;
 }
 
@@ -252,6 +252,18 @@ img {
 .image9 {
   width: 90%;
   min-width: 180px;
+}
+
+.img-icon {
+  border: none;
+  height: 54px;
+  width: 54px;
+}
+
+.footer-link-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .contact-img {
