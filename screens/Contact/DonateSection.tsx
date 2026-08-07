@@ -1,4 +1,4 @@
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { mainInfo } from "@/constants/mainInfo";
 

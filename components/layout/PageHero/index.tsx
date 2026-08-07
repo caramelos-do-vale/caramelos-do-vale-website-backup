@@ -1,6 +1,6 @@
 import { Tag, TagVariantProps } from "@/components/ui/Tag";
 import { Container } from "../Container";
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import { CTAProps } from "@/type/CTAType";
 import { ColorVariantProps } from "@/type/ColorVariantType";
 import { useId } from "react";

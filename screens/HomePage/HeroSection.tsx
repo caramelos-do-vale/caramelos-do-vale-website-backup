@@ -1,5 +1,5 @@
 import { Container } from "@/components/layout/Container";
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import { mainInfo } from "@/constants/mainInfo";
 
 export function HeroSection() {

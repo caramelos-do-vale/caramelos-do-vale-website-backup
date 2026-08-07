@@ -1,5 +1,5 @@
 import { Container } from "@/components/layout/Container";
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { Tag } from "@/components/ui/Tag";
 import { getProductsForHomepage } from "@/services/products";

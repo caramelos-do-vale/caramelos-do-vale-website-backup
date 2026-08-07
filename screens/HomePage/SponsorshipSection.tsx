@@ -1,5 +1,5 @@
 import { Container } from "@/components/layout/Container";
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Tag } from "@/components/ui/Tag";
 import { getPetsforSponsorshipHomepage } from "@/services/pets";
 import Image from "next/image";

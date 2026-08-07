@@ -1,6 +1,6 @@
 import { Container } from "@/components/layout/Container";
 import { Card } from "@/components/layout/Card";
-import { howToHelp } from "./howToHelp";
+import { howToHelpItems } from "./howToHelpItems";
 
 export function HowToHelp() {
   return (
@@ -21,7 +21,7 @@ export function HowToHelp() {
           </p>
         </div>
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-5">
-          {howToHelp.map((item, index) => (
+          {howToHelpItems.map((item, index) => (
             <li key={index}>
               <Card variant="dark" {...item} className="h-full" size="sm" />
             </li>

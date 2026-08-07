@@ -14,6 +14,7 @@ interface IButtonLink
   disabled?: boolean;
   children: ReactNode;
   className?: string;
+  asChild?: boolean;
 }
 
 export function ButtonLink({

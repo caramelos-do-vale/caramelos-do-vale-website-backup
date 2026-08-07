@@ -1,7 +1,7 @@
 import { CTAProps } from "@/type/CTAType";
 import { Container } from "../Container";
 import { ColorVariantProps } from "@/type/ColorVariantType";
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import { useId } from "react";
 
 interface ICTABanner {

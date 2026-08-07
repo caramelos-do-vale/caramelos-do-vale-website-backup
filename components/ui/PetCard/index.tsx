@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Heart, MoveRight } from "lucide-react";
 import { Tag } from "@/components/ui/Tag";
 import { IPet } from "@/type/Pet";
-import { ButtonLink } from "../Button";
+import { ButtonLink } from "../ButtonLink";
 
 interface IPetCard {
   pet: IPet;
@@ -108,10 +108,25 @@ export function PetCard({ pet }: IPetCard) {
             </p>
           )}
 
-          <ButtonLink href="">
+          <span
+            className="
+              inline-flex
+              items-center
+              justify-center
+              gap-2
+              rounded-xl
+              bg-yellow
+              shadow-[0_4px_14px_rgba(234,183,74,0.35)] 
+              hover:shadow-[0_6px_18px_rgba(234,183,74,0.45)]
+              px-6
+              py-3
+              text-sm
+              font-bold
+            "
+          >
             Conhecer {pet.pet_name}
             <MoveRight aria-hidden="true" size={18} />
-          </ButtonLink>
+          </span>
         </div>
       </Link>
     </article>

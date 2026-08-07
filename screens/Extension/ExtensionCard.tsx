@@ -1,4 +1,4 @@
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ColorVariantProps } from "@/type/ColorVariantType";
 import { CTAProps } from "@/type/CTAType";
 

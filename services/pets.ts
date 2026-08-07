@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
-import { IPet } from "@/type/Animal";
+import { IPet } from "@/type/Pet";
+import { IPetImage } from "@/type/PetImage";
 
 export async function getPetsForAdoption(): Promise<IPet[]> {
   const supabase = await createClient();
@@ -39,6 +40,20 @@ export async function getPetById(id: number): Promise<IPet> {
     .select("*")
     .eq("pet_id", id)
     .single();
+  if (error) {
+    throw new Error("Failed to fetch pet");
+  }
+  return data;
+}
+
+export async function getPetImages(petId: number): Promise<IPetImage[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("images_links")
+    .select("*")
+    .eq("pet_id", petId)
+    .order("profile_photo", { ascending: false });
+
   if (error) {
     throw new Error("Failed to fetch pet");
   }

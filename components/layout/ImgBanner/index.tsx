@@ -2,7 +2,7 @@ import { Container } from "../Container";
 import { ColorVariantProps } from "@/type/ColorVariantType";
 import { Tag, TagVariantProps } from "@/components/ui/Tag";
 import { CTAProps } from "@/type/CTAType";
-import { ButtonLink } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 
 interface IImgBanner {
   variant: ColorVariantProps | "light";
