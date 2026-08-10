@@ -12,7 +12,7 @@ export function AboutPage() {
         details={
           <span
             aria-hidden="true"
-            className="absolute -top-20 -right-20 w-96 h-96 opacity-10 blob-1 bg-yellow"
+            className="blob-1 bg-yellow absolute -top-20 -right-20 h-96 w-96 opacity-10"
           ></span>
         }
         tag="Nossa história"
@@ -55,16 +55,16 @@ export function AboutPage() {
           <div className="relative w-full max-w-xs md:w-146 md:max-w-full">
             <div className="relative h-115 w-full overflow-hidden rounded-3xl shadow-[rgba(26,46,56,0.12)_0px_8px_40px]">
               <Image
-                src="/about_us.jpg"
-                alt="Voluntária da Caramelos do Vale com cão resgatado"
+                src="/about_us_2.jpg"
+                alt="Um cão resgatado com uma placa de disponível para adoção"
                 fill
                 sizes="(max-width: 768px) 100vw, 700px"
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
-            <div className="absolute -bottom-5 -right-5 p-5 rounded-2xl bg-yellow">
-              <time className="font-black text-3xl text-dark">2022</time>
-              <div className="text-xs font-bold text-yellow-deep">Fundação</div>
+            <div className="bg-yellow absolute -right-5 -bottom-5 rounded-2xl p-5">
+              <time className="text-dark text-3xl font-black">2022</time>
+              <div className="text-yellow-deep text-xs font-bold">Fundação</div>
             </div>
           </div>
         }
@@ -85,7 +85,7 @@ export function AboutPage() {
           "Por vezes, eles visitam o campus em dias de cafés, fazendo a maior festa. 🐾",
         ]}
         img={
-          <div className="blob-2 relative h-110 w-full max-w-sm md:w-146 md:max-w-full overflow-hidden shadow-[rgba(26,46,56,0.2)_0px_12px_50px]">
+          <div className="blob-2 relative h-110 w-full max-w-sm overflow-hidden shadow-[rgba(26,46,56,0.2)_0px_12px_50px] md:w-146 md:max-w-full">
             <Image
               src="/founders.jpg"
               alt="Lobo e Loba, fundadores da Caramelos do Vale"
@@ -98,7 +98,7 @@ export function AboutPage() {
         details={
           <span
             aria-hidden="true"
-            className="absolute -left-16 bottom-0 w-64 h-64 opacity-10 blob-3 bg-dark"
+            className="blob-3 bg-dark absolute bottom-0 -left-16 h-64 w-64 opacity-10"
           ></span>
         }
       />

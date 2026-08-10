@@ -5,7 +5,14 @@ import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
-import { CookieBanner } from "@/components/ui/CookieBanner";
+import dynamic from "next/dynamic";
+
+const CookieBanner = dynamic(
+  () => import("@/components/ui/CookieBanner").then((mod) => mod.CookieBanner),
+  {
+    ssr: false,
+  },
+);
 
 const nunito = Nunito({
   variable: "--font-nunito",

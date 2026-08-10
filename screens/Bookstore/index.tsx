@@ -22,7 +22,7 @@ export function BookstorePage() {
           external: true,
         }}
         img={
-          <div className="relative w-full max-w-105 h-95">
+          <div className="relative h-95 w-full max-w-105">
             <div className="absolute top-0 left-0 h-72 w-56 -rotate-6 overflow-hidden rounded-2xl shadow-[rgba(0,0,0,0.3)_0px_8px_30px]">
               <Image
                 src="/sebo.jpeg"
@@ -34,8 +34,8 @@ export function BookstorePage() {
             </div>
             <div className="absolute top-10 right-0 h-64 w-52 rotate-5 overflow-hidden rounded-2xl shadow-[rgba(0,0,0,0.3)_0px_8px_30px]">
               <Image
-                src="/sebo.jpeg"
-                alt="Sid com uma pilha de livros disponíveis no Sebo da Caramelos"
+                src="/sebo_2.jpg"
+                alt="Café da Caramelos com itens do Sebo"
                 fill
                 sizes="208px"
                 className="object-cover"
@@ -43,9 +43,9 @@ export function BookstorePage() {
             </div>
             <div
               aria-hidden="true"
-              className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-2xl bg-yellow px-5 py-3 shadow-[rgba(234,183,74,0.6)_0px_4px_20px]"
+              className="bg-yellow absolute bottom-0 left-1/2 z-10 -translate-x-1/2 rounded-2xl px-5 py-3 whitespace-nowrap shadow-[rgba(234,183,74,0.6)_0px_4px_20px]"
             >
-              <span className="text-sm font-black text-dark">
+              <span className="text-dark text-sm font-black">
                 @sebodacaramelos
               </span>
             </div>
@@ -57,7 +57,7 @@ export function BookstorePage() {
         details={
           <span
             aria-hidden="true"
-            className="absolute -top-10 -right-10 w-56 h-56 opacity-10 blob-1 bg-dark"
+            className="blob-1 bg-dark absolute -top-10 -right-10 h-56 w-56 opacity-10"
           ></span>
         }
         variant="primary"

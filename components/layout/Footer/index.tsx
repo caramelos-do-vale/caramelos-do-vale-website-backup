@@ -8,8 +8,8 @@ import { Container } from "../Container";
 
 export function Footer() {
   return (
-    <footer className="bg-(--color-dark) border-t-4 border-yellow">
-      <Container className="text-sm text-white/60 grid grid-cols-2 gap-8 pt-14 pb-10 md:grid-cols-5">
+    <footer className="border-yellow border-t-4 bg-(--color-dark)">
+      <Container className="grid grid-cols-2 gap-8 pt-14 pb-10 text-sm text-white/60 md:grid-cols-5">
         <section
           aria-labelledby="footer-about"
           className="col-span-2 flex flex-col gap-4"
@@ -24,7 +24,7 @@ export function Footer() {
             className="inline-flex"
           >
             <Image
-              src="/caramelos_do_vale_logo.png"
+              src="/caramelos_do_vale_logo_white.png"
               alt=""
               width={97}
               height={40}
@@ -42,22 +42,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Acessar Instagram da Caramelos do Vale"
-                className="
-                  flex
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[linear-gradient(135deg,rgb(245,133,41),rgb(221,42,123),rgb(129,52,175))]
-                  p-2
-                  will-change-transform
-                  transition-all
-                  duration-200
-                  hover:-translate-y-0.5
-                  hover:shadow-[0_8px_20px_rgba(221,42,123,0.35)]
-                  focus-visible:outline-2
-                  focus-visible:outline-offset-4
-                  focus-visible:outline-yellow
-                "
+                className="focus-visible:outline-yellow flex items-center justify-center rounded-full bg-[linear-gradient(135deg,rgb(245,133,41),rgb(221,42,123),rgb(129,52,175))] p-2 transition-all duration-200 will-change-transform hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(221,42,123,0.35)] focus-visible:outline-2 focus-visible:outline-offset-4"
               >
                 <FaInstagram
                   aria-hidden="true"
@@ -73,21 +58,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Acessar Apoia.se da Caramelos do Vale"
-                className="
-                  flex 
-                  items-center 
-                  justify-center 
-                  rounded-full 
-                  p-1 
-                  will-change-transform
-                  transition-all 
-                  duration-200 
-                  hover:-translate-y-0.5 
-                  hover:shadow-[0_8px_20px_rgba(255,255,255,0.15)] 
-                  focus-visible:outline-2 
-                  focus-visible:outline-offset-4 
-                  focus-visible:outline-yellow
-                "
+                className="focus-visible:outline-yellow flex items-center justify-center rounded-full p-1 transition-all duration-200 will-change-transform hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(255,255,255,0.15)] focus-visible:outline-2 focus-visible:outline-offset-4"
               >
                 <Image
                   src="/apoiase_logo.png"
@@ -106,22 +77,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Acessar WhatsApp da Caramelos do Vale"
-                className="
-                  flex
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#25d366]
-                  p-2
-                  will-change-transform
-                  transition-all
-                  duration-200
-                  hover:-translate-y-0.5
-                  hover:shadow-[0_8px_20px_rgba(37,211,102,0.35)]
-                  focus-visible:outline-2
-                  focus-visible:outline-offset-4
-                  focus-visible:outline-yellow
-                "
+                className="focus-visible:outline-yellow flex items-center justify-center rounded-full bg-[#25d366] p-2 transition-all duration-200 will-change-transform hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(37,211,102,0.35)] focus-visible:outline-2 focus-visible:outline-offset-4"
               >
                 <FaWhatsapp
                   aria-hidden="true"
@@ -140,7 +96,7 @@ export function Footer() {
           >
             <h3
               id={`footer-${footerSection.title}`}
-              className="text-xs uppercase text-yellow"
+              className="text-yellow text-xs uppercase"
             >
               {footerSection.title}
             </h3>
@@ -150,22 +106,7 @@ export function Footer() {
                 <li key={item.label}>
                   <Link
                     href={item.url}
-                    className="
-                      relative
-                      transition-colors
-                      hover:text-white
-                      after:absolute
-                      after:left-0
-                      after:-bottom-1
-                      after:h-px
-                      after:w-0
-                      after:bg-yellow
-                      after:transition-all
-                      hover:after:w-full  
-                      focus-visible:outline-2 
-                      focus-visible:outline-offset-4 
-                      focus-visible:outline-yellow
-                    "
+                    className="after:bg-yellow focus-visible:outline-yellow relative transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:transition-all hover:text-white hover:after:w-full focus-visible:outline-2 focus-visible:outline-offset-4"
                   >
                     {item.label}
                   </Link>
@@ -179,7 +120,7 @@ export function Footer() {
           aria-labelledby="footer-pix"
           className="col-span-2 flex flex-col gap-3 md:col-span-1"
         >
-          <h3 id="footer-pix" className="text-xs uppercase text-yellow">
+          <h3 id="footer-pix" className="text-yellow text-xs uppercase">
             Doação via Pix
           </h3>
 

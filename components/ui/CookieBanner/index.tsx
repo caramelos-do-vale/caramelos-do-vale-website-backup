@@ -1,27 +1,24 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { updateAnalyticsConsent } from "@/analytics/consent";
 
 export function CookieBanner() {
-  const [visible, setVisible] = useState(() => {
-    return !localStorage.getItem("caramelos-cookie-consent");
-  });
+  const [visible, setVisible] = useState(
+    !localStorage.getItem("caramelos-cookie-consent"),
+  );
 
-  if (visible === null || !visible) {
+  if (!visible) {
     return null;
   }
 
   function handleAccept() {
     localStorage.setItem("caramelos-cookie-consent", "accepted");
-
     updateAnalyticsConsent("granted");
     setVisible(false);
   }
 
   function handleReject() {
     localStorage.setItem("caramelos-cookie-consent", "rejected");
-
     updateAnalyticsConsent("denied");
     setVisible(false);
   }

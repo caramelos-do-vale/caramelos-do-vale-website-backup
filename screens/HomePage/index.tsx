@@ -41,9 +41,9 @@ export async function HomePage() {
                 className="blob-1 object-cover"
               />
             </div>
-            <div className="absolute -bottom-4 -left-4 rounded-2xl bg-yellow p-4 shadow-[rgba(234,183,74,0.5)_0px_6px_24px] sm:bottom-6 sm:left-6">
-              <p className="text-2xl text-dark font-black">2022</p>
-              <p className="text-xs font-bold text-yellow-deep">Fundação</p>
+            <div className="bg-yellow absolute -bottom-4 -left-4 rounded-2xl p-4 shadow-[rgba(234,183,74,0.5)_0px_6px_24px] sm:bottom-6 sm:left-6">
+              <p className="text-dark text-2xl font-black">2022</p>
+              <p className="text-yellow-deep text-xs font-bold">Fundação</p>
             </div>
           </div>
         }
@@ -51,11 +51,11 @@ export async function HomePage() {
           <>
             <span
               aria-hidden="true"
-              className="absolute -top-20 -right-20 w-80 h-80 opacity-10 blob-1 bg-yellow"
+              className="blob-1 bg-yellow absolute -top-20 -right-20 h-80 w-80 opacity-10"
             ></span>
             <span
               aria-hidden="true"
-              className="absolute -bottom-16 -left-16 w-64 h-64 opacity-10 blob-2 bg-white"
+              className="blob-2 absolute -bottom-16 -left-16 h-64 w-64 bg-white opacity-10"
             ></span>
           </>
         }
@@ -89,7 +89,7 @@ export async function HomePage() {
                 className="blob-2 object-cover object-top-left"
               />
             </div>
-            <div className="absolute -top-4 -right-4 sm:top-6 sm:right-6 w-20 h-20 rounded-full flex items-center justify-center bg-blue">
+            <div className="bg-blue absolute -top-4 -right-4 flex h-20 w-20 items-center justify-center rounded-full sm:top-6 sm:right-6">
               <span className="text-3xl">🎓</span>
             </div>
           </div>
@@ -97,7 +97,7 @@ export async function HomePage() {
         details={
           <span
             aria-hidden="true"
-            className="absolute top-0 right-0 w-64 h-64 opacity-10 blob-3 bg-dark"
+            className="blob-3 bg-dark absolute top-0 right-0 h-64 w-64 opacity-10"
           ></span>
         }
       />
@@ -130,7 +130,7 @@ export async function HomePage() {
             <div className="absolute top-0 left-8 h-64 w-48 rotate-[-4deg] overflow-hidden rounded-3xl shadow-[rgba(26,46,56,0.15)_0px_8px_30px] sm:h-72 sm:w-56">
               <Image
                 src="/sebo.jpeg"
-                alt="Sebo da Caramelos — livros disponíveis"
+                alt="Sid com uma pilha de livros disponíveis no Sebo da Caramelos"
                 fill
                 sizes="(max-width: 640px) 192px, 224px"
                 className="object-cover"
@@ -139,16 +139,16 @@ export async function HomePage() {
 
             <div className="absolute top-8 right-4 h-56 w-44 rotate-3 overflow-hidden rounded-3xl shadow-[rgba(26,46,56,0.15)_0px_8px_30px] sm:h-64 sm:w-52">
               <Image
-                src="/sebo.jpeg"
-                alt="Livros do Sebo da Caramelos"
+                src="/sebo_2.jpg"
+                alt="Café da Caramelos com itens do Sebo"
                 fill
                 sizes="(max-width: 640px) 176px, 208px"
                 className="object-cover"
               />
             </div>
 
-            <div className="absolute bottom-4.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-2xl bg-yellow px-5 py-3 shadow-[rgba(234,183,74,0.5)_0px_4px_20px]">
-              <span className="text-sm font-black text-dark">
+            <div className="bg-yellow absolute bottom-4.5 left-1/2 -translate-x-1/2 rounded-2xl px-5 py-3 whitespace-nowrap shadow-[rgba(234,183,74,0.5)_0px_4px_20px]">
+              <span className="text-dark text-sm font-black">
                 📚 100% revertido para os cães
               </span>
             </div>
