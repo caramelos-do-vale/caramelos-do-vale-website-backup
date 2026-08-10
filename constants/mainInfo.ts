@@ -2,6 +2,7 @@ export const mainInfo = {
   rescues: 280,
   adoptions: 160,
   inCare: 30,
+  mailPix: "pix@caramelosdovale.com.br",
   mail: "caramelosdovale@gmail.com",
   cnpj: "56.319.404/0001-05",
   whatsapp:

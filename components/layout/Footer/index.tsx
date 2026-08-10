@@ -128,7 +128,7 @@ export function Footer() {
             size="sm"
             variant="light"
             label="Chave Pix — e-mail"
-            value={mainInfo.mail}
+            value={mainInfo.mailPix}
           />
 
           <CopyButton
