@@ -5,14 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
-import dynamic from "next/dynamic";
-
-const CookieBanner = dynamic(
-  () => import("@/components/ui/CookieBanner").then((mod) => mod.CookieBanner),
-  {
-    ssr: false,
-  },
-);
+import { CookieBannerWrapper } from "@/components/layout/CookieBannerWrapper";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -38,10 +31,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${nunito.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <CookieBanner />
         <Navbar />
         <main className="mt-15 md:mt-16">{children}</main>
         <Footer />
+        <CookieBannerWrapper />
       </body>
       <Script id="google-consent-default">
         {`
