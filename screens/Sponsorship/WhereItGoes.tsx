@@ -1,13 +1,13 @@
 import { Container } from "@/components/layout/Container";
-import { whereItGoes } from "./whereItGoes";
+import { whereItGoesItems } from "./whereItGoesItems";
 import { Card } from "@/components/layout/Card";
 
 export function WhereItGoes() {
   return (
     <section className="bg-light">
-      <Container className="py-16 flex flex-col gap-12">
+      <Container className="flex flex-col gap-12 py-16">
         <div className="flex flex-col gap-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-black">
+          <h2 className="text-3xl font-black md:text-4xl">
             Para onde vai <span className="text-blue">sua contribuição?</span>
           </h2>
           <p className="text-muted">
@@ -16,13 +16,13 @@ export function WhereItGoes() {
           </p>
         </div>
 
-        <ul className="grid grid-cols-1 md:grid-cols-4 gap-5">
-          {whereItGoes.map((item) => (
+        <ul className="grid grid-cols-1 gap-5 md:grid-cols-4">
+          {whereItGoesItems.map((item) => (
             <li key={item.title}>
               <Card
                 variant="light"
                 {...item}
-                className="text-center! items-center"
+                className="items-center text-center!"
               />
             </li>
           ))}

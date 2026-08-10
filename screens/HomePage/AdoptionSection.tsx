@@ -12,10 +12,10 @@ export async function AdoptionSection() {
     <section aria-labelledby="adoption-title">
       <Container className="py-16 md:py-24">
         <Tag>Adoção</Tag>
-        <div className="flex flex-col gap-4 md:flex-row md:flex md:justify-between md:items-center">
+        <div className="flex flex-col gap-4 md:flex md:flex-row md:items-center md:justify-between">
           <h2
             id="adoption-title"
-            className="text-3xl md:text-4xl font-black leading-tight md:max-w-2xl"
+            className="text-3xl leading-tight font-black md:max-w-2xl md:text-4xl"
           >
             Conheça quem está esperando{" "}
             <span className="text-blue">por uma família.</span>
@@ -24,7 +24,7 @@ export async function AdoptionSection() {
             Ver todos
           </ButtonLink>
         </div>
-        <ul className="mt-10 grid gap-4 grid-cols-2 md:grid-cols-4">
+        <ul className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
           {pets.map((pet, index) => (
             <li
               key={pet.pet_id}
@@ -49,7 +49,7 @@ export async function AdoptionSection() {
                 <div className="relative mt-auto w-full p-5 text-white">
                   <p className="text-2xl font-bold">{pet.pet_name}</p>
                   <p className="text-sm text-white/80">
-                    {pet.gender === "F" ? "Fêmea" : "Macho"} · {pet.age}
+                    {pet.gender === "f" ? "Fêmea" : "Macho"} · {pet.age}
                   </p>
                 </div>
               </Link>

@@ -1,3 +1,4 @@
+import { trackEvent } from "@/analytics";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Tag } from "@/components/ui/Tag";
 import { mainInfo } from "@/constants/mainInfo";
@@ -8,10 +9,17 @@ interface IPetDetails {
 }
 
 export function PetDetails({ pet }: IPetDetails) {
+  function handleClick() {
+    trackEvent("click_adoption", {
+      pet_id: pet.pet_id,
+      pet_name: pet.pet_name,
+    });
+  }
+
   return (
     <div className="flex flex-col gap-5">
       <Tag>Disponível para adoção</Tag>
-      <h1 className="text-5xl md:text-6xl font-black" id="pet-name">
+      <h1 className="text-5xl font-black md:text-6xl" id="pet-name">
         {pet.pet_name}
       </h1>
       <dl className="flex flex-wrap gap-2">
@@ -43,6 +51,7 @@ export function PetDetails({ pet }: IPetDetails) {
         rel="noopener noreferrer"
         aria-label={`Quero adotar ${pet.pet_name} pelo WhatsApp`}
         size="lg"
+        onClick={handleClick}
       >
         Quero adotar {pet.pet_name}
       </ButtonLink>

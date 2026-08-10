@@ -3,6 +3,9 @@ import { Nunito, Outfit } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
+import { CookieBanner } from "@/components/ui/CookieBanner";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -27,11 +30,26 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${nunito.variable} ${outfit.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
+        <CookieBanner />
         <Navbar />
         <main className="mt-15 md:mt-16">{children}</main>
         <Footer />
       </body>
+      <Script id="google-consent-default">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        gtag('consent', 'default', {
+            analytics_storage: 'denied',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied'
+        });
+    `}
+      </Script>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
     </html>
   );
 }

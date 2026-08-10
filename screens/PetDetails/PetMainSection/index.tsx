@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { PetImageGallery } from "./PetImageGallery";
 import { PetMainImages } from "./PetMainImages";
@@ -8,6 +8,7 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { MoveLeftIcon } from "lucide-react";
 import { IPet } from "@/type/Pet";
 import { PetDetails } from "./PetDetails";
+import { trackEvent } from "@/analytics";
 
 interface IPetMainSection {
   images: IPetImage[];
@@ -17,10 +18,17 @@ interface IPetMainSection {
 export function PetMainSection({ images, pet }: IPetMainSection) {
   const [showGallery, setShowGallery] = useState(false);
 
+  useEffect(() => {
+    trackEvent("view_pet", {
+      pet_id: pet.pet_id,
+      pet_name: pet.pet_name,
+    });
+  }, [pet]);
+
   return (
     <>
       <section aria-labelledby="pet-name">
-        <Container className="pt-4 pb-16 flex flex-col gap-3">
+        <Container className="flex flex-col gap-3 pt-4 pb-16">
           <ButtonLink
             href="/pets"
             variant="secondary"
