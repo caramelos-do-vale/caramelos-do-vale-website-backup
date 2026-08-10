@@ -1,3 +1,4 @@
+"use client";
 import { trackEvent } from "@/analytics";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Tag } from "@/components/ui/Tag";
