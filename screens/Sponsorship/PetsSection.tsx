@@ -1,29 +1,29 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { Container } from "@/components/layout/Container";
 import { PetCard } from "@/components/ui/PetCard";
+import { IPet } from "@/type/Pet";
 
 interface IPetsSection {
-  animals: any[];
+  animals: IPet[];
 }
 
 export function PetsSection({ animals }: IPetsSection) {
   return (
-    <section className="relative overflow-hidden bg-yellow">
+    <section className="bg-yellow relative overflow-hidden">
       <span
         aria-hidden="true"
-        className="absolute -top-10 -right-10 w-64 h-64 opacity-10 blob-3 bg-dark"
+        className="blob-3 bg-dark absolute -top-10 -right-10 h-64 w-64 opacity-10"
       ></span>
-      <Container className="py-20 flex flex-col gap-12">
+      <Container className="flex flex-col gap-12 py-20">
         <div className="flex flex-col gap-3 text-center">
-          <h2 className="text-3xl sm:text-4xl font-black">
+          <h2 className="text-3xl font-black sm:text-4xl">
             Encontre um amigo para apadrinhar
           </h2>
           <p>Conheça quem está esperando por um vínculo especial.</p>
         </div>
         {animals.length === 0 ? (
-          <div className="rounded-3xl border border-border bg-white px-8 py-14 text-center">
-            <p className="text-xl font-black text-dark">
+          <div className="border-border rounded-3xl border bg-white px-8 py-14 text-center">
+            <p className="text-dark text-xl font-black">
               Nenhum animal encontrado
             </p>
           </div>

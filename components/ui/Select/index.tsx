@@ -2,7 +2,7 @@
 import { Check, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-interface ISelectOption {
+export interface ISelectOption {
   label: string;
   value: string;
 }
@@ -68,27 +68,7 @@ export function Select({ id, label, value, options, onChange }: ISelect) {
         aria-haspopup="listbox"
         aria-label={`${label}: ${selectedOption?.label}`}
         aria-expanded={open}
-        className="
-          flex
-          h-13
-          w-full
-          items-center
-          justify-between
-          rounded-2xl
-          border
-          border-border
-          bg-white
-          px-4
-          text-left
-          text-sm
-          font-medium
-          transition-[border-color,box-shadow]
-          duration-200
-          hover:border-yellow
-          focus-visible:outline-none
-          focus-visible:ring-4
-          focus-visible:ring-yellow/10
-        "
+        className="border-border hover:border-yellow focus-visible:ring-yellow/10 flex h-13 w-full items-center justify-between rounded-2xl border bg-white px-4 text-left text-sm font-medium transition-[border-color,box-shadow] duration-200 focus-visible:ring-4 focus-visible:outline-none"
       >
         <span>{capitalize(selectedOption?.label ?? "")}</span>
 
@@ -101,26 +81,11 @@ export function Select({ id, label, value, options, onChange }: ISelect) {
       </button>
 
       <div
-        className={`
-          absolute
-          left-0
-          right-0
-          top-[calc(100%+8px)]
-          z-30
-          overflow-hidden
-          rounded-2xl
-          border
-          border-border
-          bg-white
-          shadow-[rgba(26,46,56,0.12)_0px_8px_30px]
-          transition-[opacity,transform]
-          duration-200
-          ${
-            open
-              ? "translate-y-0 opacity-100"
-              : "pointer-events-none -translate-y-2 opacity-0"
-          }
-        `}
+        className={`border-border absolute top-[calc(100%+8px)] right-0 left-0 z-30 overflow-hidden rounded-2xl border bg-white shadow-[rgba(26,46,56,0.12)_0px_8px_30px] transition-[opacity,transform] duration-200 ${
+          open
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-2 opacity-0"
+        } `}
         aria-hidden={!open}
       >
         <ul role="listbox" id={`${id}-listbox`}>
@@ -135,24 +100,11 @@ export function Select({ id, label, value, options, onChange }: ISelect) {
                     onChange(option.value);
                     setOpen(false);
                   }}
-                  className={`
-                    flex
-                    w-full
-                    items-center
-                    justify-between
-                    px-4
-                    py-3
-                    text-left
-                    text-sm
-                    transition-colors
-                    focus-visible:outline-none
-                  focus-visible:bg-light
-                    ${
-                      selected
-                        ? "bg-blue-light font-semibold text-blue"
-                        : "hover:bg-light"
-                    }
-                  `}
+                  className={`focus-visible:bg-light flex w-full items-center justify-between px-4 py-3 text-left text-sm transition-colors focus-visible:outline-none ${
+                    selected
+                      ? "bg-blue-light text-blue font-semibold"
+                      : "hover:bg-light"
+                  } `}
                 >
                   {capitalize(option.label)}
 

@@ -1,30 +1,14 @@
-import { Container } from "@/components/layout/Container";
-import { ButtonLink } from "@/components/ui/ButtonLink";
-import { Tag } from "@/components/ui/Tag";
+import { EmptyState } from "@/components/layout/EmptyState";
 import { getPetsforAdoptionHomepage } from "@/services/pets";
 import Image from "next/image";
 import Link from "next/link";
 
-export async function AdoptionSection() {
+export async function PetsForAdoption() {
   const pets = await getPetsforAdoptionHomepage();
-
   return (
-    <section aria-labelledby="adoption-title">
-      <Container className="py-16 md:py-24">
-        <Tag>Adoção</Tag>
-        <div className="flex flex-col gap-4 md:flex md:flex-row md:items-center md:justify-between">
-          <h2
-            id="adoption-title"
-            className="text-3xl leading-tight font-black md:max-w-2xl md:text-4xl"
-          >
-            Conheça quem está esperando{" "}
-            <span className="text-blue">por uma família.</span>
-          </h2>
-          <ButtonLink href="/pets" variant="secondary">
-            Ver todos
-          </ButtonLink>
-        </div>
-        <ul className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+    <>
+      {pets.length ? (
+        <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {pets.map((pet, index) => (
             <li
               key={pet.pet_id}
@@ -56,7 +40,13 @@ export async function AdoptionSection() {
             </li>
           ))}
         </ul>
-      </Container>
-    </section>
+      ) : (
+        <EmptyState
+          icon="🐾"
+          title="Nenhum animal disponível no momento"
+          description="Continue acompanhando nosso trabalho. Novos animais podem chegar a qualquer momento."
+        />
+      )}
+    </>
   );
 }

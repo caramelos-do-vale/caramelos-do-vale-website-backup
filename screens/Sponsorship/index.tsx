@@ -1,16 +1,15 @@
 import { CTABanner } from "@/components/layout/CTABanner";
 import { PageHero } from "@/components/layout/PageHero";
 import { mainInfo } from "@/constants/mainInfo";
-import { getPetsforSponsorship } from "@/services/pets";
 import Image from "next/image";
-import { PetsSection } from "./PetsSection";
 import { ImgBanner } from "@/components/layout/ImgBanner";
 import { HowItWorks } from "./HowItWorks";
 import { WhereItGoes } from "./WhereItGoes";
+import { Suspense } from "react";
+import { SponsorshipPets } from "./SponsorshipPets";
+import { SponsorshipPetsSkeleton } from "@/components/layout/Skeleton/SponsorshipPetsSkeleton";
 
 export async function SponsorshipPage() {
-  const pets = await getPetsforSponsorship();
-
   return (
     <>
       <PageHero
@@ -29,79 +28,33 @@ export async function SponsorshipPage() {
         details={
           <span
             aria-hidden="true"
-            className="absolute -top-10 -right-10 w-80 h-80 opacity-10 blob-1 bg-yellow"
+            className="blob-1 bg-yellow absolute -top-10 -right-10 h-80 w-80 opacity-10"
           ></span>
         }
         img={
           <div className="relative h-72 sm:h-80 lg:h-96">
-            <div
-              className="
-                blob-1
-                absolute
-                top-0
-                right-0
-                h-64
-                w-56
-                overflow-hidden
-                shadow-[rgba(0,0,0,0.25)_0px_12px_40px]
-                md:h-80
-                md:w-72
-              "
-            >
+            <div className="blob-1 absolute top-0 right-0 h-64 w-56 overflow-hidden shadow-[rgba(0,0,0,0.25)_0px_12px_40px] md:h-80 md:w-72">
               <Image
-                src={pets[0].profile_img}
-                alt={pets[0].pet_name}
+                src="/sponsorship_hero_1.jpg"
+                alt=""
                 fill
                 sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 288px"
                 className="object-cover"
               />
             </div>
-            <div
-              className="
-              absolute
-              bottom-0
-              left-4
-              h-28
-              w-28
-              overflow-hidden
-              rounded-full
-              border-4
-              border-yellow
-              shadow-[rgba(0,0,0,0.2)_0px_6px_24px]
-              md:left-16
-              md:bottom-4
-              md:h-32
-              md:w-32
-            "
-            >
+            <div className="border-yellow absolute bottom-0 left-4 h-28 w-28 overflow-hidden rounded-full border-4 shadow-[rgba(0,0,0,0.2)_0px_6px_24px] md:bottom-4 md:left-16 md:h-32 md:w-32">
               <Image
-                src={pets[1].profile_img}
-                alt={pets[1].pet_name}
+                src="/sponsorship_hero_2.jpg"
+                alt=""
                 fill
                 sizes="(max-width: 640px) 112px, 128px"
                 className="object-cover"
               />
             </div>
-            <div
-              className="
-                absolute
-                top-8
-                left-12
-                h-24
-                w-24
-                overflow-hidden
-                rounded-full
-                border-4
-                border-white
-                shadow-[rgba(0,0,0,0.2)_0px_6px_24px]
-                md:left-20
-                md:h-28
-                md:w-28
-              "
-            >
+            <div className="absolute top-8 left-12 h-24 w-24 overflow-hidden rounded-full border-4 border-white shadow-[rgba(0,0,0,0.2)_0px_6px_24px] md:left-20 md:h-28 md:w-28">
               <Image
-                src={pets[2].profile_img}
-                alt={pets[2].pet_name}
+                src="/sponsorship_hero_3.jpg"
+                alt=""
                 fill
                 sizes="(max-width: 640px) 96px, 112px"
                 className="object-cover"
@@ -109,21 +62,7 @@ export async function SponsorshipPage() {
             </div>
             <div
               aria-hidden="true"
-              className="
-                absolute
-                right-0
-                bottom-4
-                flex
-                h-12
-                w-12
-                items-center
-                justify-center
-                rounded-full
-                bg-yellow
-                text-2xl
-                shadow-[rgba(234,183,74,0.6)_0px_4px_16px]
-                sm:right-4
-              "
+              className="bg-yellow absolute right-0 bottom-4 flex h-12 w-12 items-center justify-center rounded-full text-2xl shadow-[rgba(234,183,74,0.6)_0px_4px_16px] sm:right-4"
             >
               💛
             </div>
@@ -144,10 +83,10 @@ export async function SponsorshipPage() {
           "O apadrinhamento não é uma versão menor da adoção. É uma relação própria — de carinho, vínculo e responsabilidade compartilhada.",
         ]}
         img={
-          <div className="relative blob-2 overflow-hidden h-100 w-full w-max-md">
+          <div className="blob-2 w-max-md relative h-100 w-full overflow-hidden">
             <Image
               alt="Chocotone, um dos cães resgatados"
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
               fill
               src="/sponsorship.jpg"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -155,7 +94,9 @@ export async function SponsorshipPage() {
           </div>
         }
       />
-      <PetsSection animals={pets} />
+      <Suspense fallback={<SponsorshipPetsSkeleton />}>
+        <SponsorshipPets />
+      </Suspense>
       <HowItWorks />
       <WhereItGoes />
       <CTABanner

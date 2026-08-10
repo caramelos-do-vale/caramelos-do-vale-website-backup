@@ -1,12 +1,11 @@
 import { CTABanner } from "@/components/layout/CTABanner";
 import { PageHero } from "@/components/layout/PageHero";
 import { mainInfo } from "@/constants/mainInfo";
-import { getPetsForAdoption } from "@/services/pets";
-import { AvailablePetsSection } from "./AvailablePetsSection";
+import { AvailablePetsContent } from "./AvailablePetsContent";
+import { Suspense } from "react";
+import { AvailablePetsSkeleton } from "@/components/layout/Skeleton/AvailablePetsSkeleton";
 
 export async function PetsPage() {
-  const animals = await getPetsForAdoption();
-
   return (
     <>
       <PageHero
@@ -20,7 +19,9 @@ export async function PetsPage() {
         }
         description="Cada um tem uma história e merece um lar cheio de amor."
       />
-      <AvailablePetsSection animals={animals} />
+      <Suspense fallback={<AvailablePetsSkeleton />}>
+        <AvailablePetsContent />
+      </Suspense>
       <CTABanner
         variant="primary"
         title="Interessado em adotar?"

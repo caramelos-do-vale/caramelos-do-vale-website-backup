@@ -1,13 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { PetCard } from "@/components/ui/PetCard";
 import { Select } from "@/components/ui/Select";
+import { IPet } from "@/type/Pet";
+import { EmptyState } from "@/components/layout/EmptyState";
 
 interface IAvailablePetsSection {
-  animals: any[];
+  animals: IPet[];
 }
 
 export function AvailablePetsSection({ animals }: IAvailablePetsSection) {
@@ -68,7 +69,7 @@ export function AvailablePetsSection({ animals }: IAvailablePetsSection) {
               <Search
                 aria-hidden="true"
                 size={18}
-                className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-muted"
+                className="text-muted pointer-events-none absolute top-1/2 left-4 -translate-y-1/2"
               />
 
               <input
@@ -76,23 +77,7 @@ export function AvailablePetsSection({ animals }: IAvailablePetsSection) {
                 placeholder="Buscar por nome..."
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
-                className="
-                  h-13
-                  w-full
-                  rounded-2xl
-                  border
-                  border-border
-                  bg-white
-                  pl-11
-                  pr-4
-                  text-sm
-                  outline-none
-                  transition-colors
-                  placeholder:text-muted
-                  focus:border-yellow
-                  focus:ring-4
-                  focus:ring-yellow/10
-                "
+                className="border-border placeholder:text-muted focus:border-yellow focus:ring-yellow/10 h-13 w-full rounded-2xl border bg-white pr-4 pl-11 text-sm transition-colors outline-none focus:ring-4"
               />
             </label>
           </div>
@@ -148,7 +133,7 @@ export function AvailablePetsSection({ animals }: IAvailablePetsSection) {
           </div>
 
           <p
-            className="text-sm text-muted"
+            className="text-muted text-sm"
             aria-live="polite"
             aria-atomic="true"
           >
@@ -157,17 +142,7 @@ export function AvailablePetsSection({ animals }: IAvailablePetsSection) {
             {filteredAnimals.length === 1 ? "animal" : "animais"}
           </p>
         </div>
-        {filteredAnimals.length === 0 ? (
-          <div role="status" aria-live="polite" className="...">
-            <h3 className="text-xl font-black text-dark">
-              Nenhum animal encontrado
-            </h3>
-
-            <p className="mt-2 text-muted">
-              Tente alterar os filtros ou limpar a pesquisa.
-            </p>
-          </div>
-        ) : (
+        {filteredAnimals.length ? (
           <ul className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {filteredAnimals.map((animal) => (
               <li key={animal.pet_id}>
@@ -175,6 +150,12 @@ export function AvailablePetsSection({ animals }: IAvailablePetsSection) {
               </li>
             ))}
           </ul>
+        ) : (
+          <EmptyState
+            icon="🐶"
+            title="Nenhum pet encontrado"
+            description="Tente alterar a pesquisa ou alterar os filtros."
+          />
         )}
       </Container>
     </section>

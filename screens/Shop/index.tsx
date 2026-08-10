@@ -1,12 +1,12 @@
 import { CTABanner } from "@/components/layout/CTABanner";
 import { PageHero } from "@/components/layout/PageHero";
 import { mainInfo } from "@/constants/mainInfo";
-import { ProductsSection } from "./ProductsSection";
-import { getProducts } from "@/services/products";
+import { Suspense } from "react";
+import { ProductGridSkeleton } from "@/components/layout/Skeleton/ProductGridSkeleton";
+import { ProductsContent } from "./ProductContent";
+import { ShopSkeleton } from "@/components/layout/Skeleton/ShopSkeleton";
 
-export async function ShopPage() {
-  const products = await getProducts();
-
+export function ShopPage() {
   return (
     <>
       <PageHero
@@ -14,7 +14,7 @@ export async function ShopPage() {
         details={
           <span
             aria-hidden="true"
-            className="absolute -top-16 -right-16 w-80 h-80 opacity-10 blob-1 bg-yellow"
+            className="blob-1 bg-yellow absolute -top-16 -right-16 h-80 w-80 opacity-10"
           ></span>
         }
         tag="Lojinha"
@@ -25,7 +25,9 @@ export async function ShopPage() {
         }
         description="Produtos que apoiam o trabalho da organização. Ao comprar, você ajuda diretamente nos cuidados dos nossos animais."
       />
-      <ProductsSection products={products} />
+      <Suspense fallback={<ShopSkeleton />}>
+        <ProductsContent />
+      </Suspense>
       <CTABanner
         variant="primary"
         title="Como comprar?"

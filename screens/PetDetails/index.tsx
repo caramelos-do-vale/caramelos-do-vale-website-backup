@@ -5,6 +5,7 @@ import { MoveLeftIcon } from "lucide-react";
 import { PetMainImages } from "./PetMainImages";
 import { PetDetails } from "./PetDetails";
 import { PetImageGallery } from "./PetImageGallery";
+import { EmptyState } from "@/components/layout/EmptyState";
 
 interface IPetDetailsPage {
   petId: number;
@@ -12,6 +13,17 @@ interface IPetDetailsPage {
 
 export async function PetDetailsPage({ petId }: IPetDetailsPage) {
   const pet = await getPetById(petId);
+
+  if (!pet) {
+    return (
+      <EmptyState
+        icon="🐾"
+        title="Pet não encontrado"
+        description="Não encontramos o pet que você está procurando."
+      />
+    );
+  }
+
   const images = await getPetImages(petId);
 
   return (

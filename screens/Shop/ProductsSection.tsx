@@ -1,13 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { ProductCard } from "@/components/ui/ProductCard";
-import { Select } from "@/components/ui/Select";
+import { ISelectOption, Select } from "@/components/ui/Select";
+import { IProduct } from "@/type/Product";
+import { EmptyState } from "@/components/layout/EmptyState";
 
 interface IProductsSection {
-  products: any[];
+  products: IProduct[];
 }
 
 export function ProductsSection({ products }: IProductsSection) {
@@ -38,14 +39,14 @@ export function ProductsSection({ products }: IProductsSection) {
         Produtos da loja
       </h2>
       <Container className="py-16">
-        <div className="mb-10 flex flex-col gap-4 items-end md:grid md:grid-cols-5">
-          <label className="relative flex-1 col-span-4">
+        <div className="mb-10 flex flex-col items-end gap-4 md:grid md:grid-cols-5">
+          <label className="relative col-span-4 flex-1">
             <span className="sr-only">Pesquisar produtos</span>
 
             <Search
               aria-hidden="true"
               size={18}
-              className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-muted"
+              className="text-muted pointer-events-none absolute top-1/2 left-4 -translate-y-1/2"
             />
 
             <input
@@ -53,23 +54,7 @@ export function ProductsSection({ products }: IProductsSection) {
               placeholder="Buscar produto..."
               value={search}
               onChange={(event) => setSearch(event.target.value)}
-              className="
-                h-13
-                w-full
-                rounded-2xl
-                border
-                border-border
-                bg-white
-                pl-11
-                pr-4
-                text-sm
-                outline-none
-                transition-colors
-                placeholder:text-muted
-                focus:border-yellow
-                focus:ring-4
-                focus:ring-yellow/10
-              "
+              className="border-border placeholder:text-muted focus:border-yellow focus:ring-yellow/10 h-13 w-full rounded-2xl border bg-white pr-4 pl-11 text-sm transition-colors outline-none focus:ring-4"
             />
           </label>
 
@@ -78,28 +63,35 @@ export function ProductsSection({ products }: IProductsSection) {
             label="Categoria"
             value={selectedType}
             onChange={setSelectedType}
-            options={filters.map((filter) => ({
-              label: filter,
-              value: filter,
-            }))}
+            options={filters.map(
+              (filter) =>
+                ({
+                  label: filter,
+                  value: filter,
+                }) as ISelectOption,
+            )}
           />
+          <p
+            className="text-muted text-sm"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            Mostrando{" "}
+            <strong className="text-dark">{filteredProducts.length}</strong>{" "}
+            {filteredProducts.length === 1 ? "animal" : "animais"}
+          </p>
         </div>
-        <p className="text-sm text-muted" aria-live="polite" aria-atomic="true">
-          Mostrando{" "}
-          <strong className="text-dark">{filteredProducts.length}</strong>{" "}
-          {filteredProducts.length === 1 ? "animal" : "animais"}
-        </p>
         {filteredProducts.length === 0 ? (
           <div role="status" aria-live="polite" className="...">
-            <h3 className="text-xl font-black text-dark">
+            <h3 className="text-dark text-xl font-black">
               Nenhum produto encontrado
             </h3>
 
-            <p className="mt-2 text-muted">
+            <p className="text-muted mt-2">
               Tente alterar a pesquisa ou selecionar outra categoria.
             </p>
           </div>
-        ) : (
+        ) : filteredProducts.length ? (
           <ul className="grid gap-5 md:grid-cols-3">
             {filteredProducts.map((product, index) => (
               <li key={product.id}>
@@ -117,6 +109,12 @@ export function ProductsSection({ products }: IProductsSection) {
               </li>
             ))}
           </ul>
+        ) : (
+          <EmptyState
+            icon="🛍️"
+            title="Nenhum produto encontrado"
+            description="Tente alterar a pesquisa ou selecionar outra categoria."
+          />
         )}
       </Container>
     </section>
