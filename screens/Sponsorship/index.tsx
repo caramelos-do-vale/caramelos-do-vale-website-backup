@@ -13,11 +13,11 @@ export async function SponsorshipPage() {
   return (
     <>
       <PageHero
-        variant="secondary"
+        variant="primary"
         tag="Apadrinhamento"
         title={
           <>
-            Apadrinhe <span className="text-yellow">um amigo</span>
+            Apadrinhe <span className="text-blue">um amigo</span>
           </>
         }
         description="Nem todo encontro precisa terminar em adoção para transformar uma vida. Escolha um animal e faça parte da história dele — mesmo sem levá-lo para casa."
@@ -28,7 +28,7 @@ export async function SponsorshipPage() {
         details={
           <span
             aria-hidden="true"
-            className="blob-1 bg-yellow absolute -top-10 -right-10 h-80 w-80 opacity-10"
+            className="blob-1 bg-blue absolute -top-10 -right-10 h-80 w-80 opacity-10"
           ></span>
         }
         img={
@@ -42,7 +42,7 @@ export async function SponsorshipPage() {
                 className="object-cover"
               />
             </div>
-            <div className="border-yellow absolute bottom-0 left-4 h-28 w-28 overflow-hidden rounded-full border-4 shadow-[rgba(0,0,0,0.2)_0px_6px_24px] md:bottom-4 md:left-16 md:h-32 md:w-32">
+            <div className="border-blue absolute bottom-0 left-4 h-28 w-28 overflow-hidden rounded-full border-4 shadow-[rgba(0,0,0,0.2)_0px_6px_24px] md:bottom-4 md:left-16 md:h-32 md:w-32">
               <Image
                 src="/sponsorship_hero_2.jpg"
                 alt=""
@@ -62,7 +62,7 @@ export async function SponsorshipPage() {
             </div>
             <div
               aria-hidden="true"
-              className="bg-yellow absolute right-0 bottom-4 flex h-12 w-12 items-center justify-center rounded-full text-2xl shadow-[rgba(234,183,74,0.6)_0px_4px_16px] sm:right-4"
+              className="bg-blue absolute right-0 bottom-4 flex h-12 w-12 items-center justify-center rounded-full text-2xl shadow-[rgba(234,183,74,0.6)_0px_4px_16px] sm:right-4"
             >
               💛
             </div>
@@ -100,7 +100,7 @@ export async function SponsorshipPage() {
       <HowItWorks />
       <WhereItGoes />
       <CTABanner
-        variant="secondary"
+        variant="dark"
         icon="💛"
         title="Pronto para apadrinhar?"
         description="Fale com a gente pelo Instagram ou WhatsApp e escolha o animal que vai fazer parte da sua vida."

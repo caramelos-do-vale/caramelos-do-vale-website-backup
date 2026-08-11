@@ -11,7 +11,7 @@ interface IPetCard {
 
 export function PetCard({ pet, mode = "adoption" }: IPetCard) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-[0_4px_24px_rgba(26,46,56,0.12)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_10px_32px_rgba(26,46,56,0.18)] motion-reduce:transition-none motion-reduce:hover:transform-none">
+    <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-[0_4px_24px_rgba(26,46,56,0.12)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_10px_32px_rgba(26,46,56,0.18)] motion-reduce:transition-none motion-reduce:hover:transform-none">
       <Link
         href={`/pets/${pet.pet_id}?from=${mode}`}
         aria-label={`Conhecer ${pet.pet_name}`}
@@ -27,7 +27,7 @@ export function PetCard({ pet, mode = "adoption" }: IPetCard) {
               (max-width: 1279px) 50vw,
               33vw
             "
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-103"
           />
           <span className="bg-dark/70 absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-bold text-white backdrop-blur-sm">
             {pet.gender === "f" ? "Fêmea" : "Macho"}
@@ -59,7 +59,7 @@ export function PetCard({ pet, mode = "adoption" }: IPetCard) {
             </p>
           )}
 
-          <span className="bg-yellow inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold shadow-[0_4px_14px_rgba(234,183,74,0.35)] hover:shadow-[0_6px_18px_rgba(234,183,74,0.45)]">
+          <span className="bg-dark text-yellow mt-auto inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold">
             Conhecer {pet.pet_name}
             <MoveRight aria-hidden="true" size={18} />
           </span>

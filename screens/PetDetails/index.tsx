@@ -31,6 +31,10 @@ export async function PetDetailsPage({
 
   const images = await getPetImages(petId);
 
+  const petPair = pet.sponsorship_pair_id
+    ? await getPetById(pet.sponsorship_pair_id)
+    : null;
+
   return (
     <>
       <section aria-labelledby="pet-name">
@@ -51,7 +55,7 @@ export async function PetDetailsPage({
               petName={pet.pet_name}
               petProfileImg={pet.profile_img}
             />
-            <PetDetails pet={pet} />
+            <PetDetails pet={pet} petPair={petPair} />
           </div>
         </Container>
       </section>

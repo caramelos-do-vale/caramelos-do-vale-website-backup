@@ -15,5 +15,5 @@ export async function SponsorshipPets() {
     );
   }
 
-  return <PetsSection animals={animals} />;
+  return <PetsSection pets={animals} />;
 }

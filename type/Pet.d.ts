@@ -9,4 +9,5 @@ export interface IPet {
   need_sponsorship: boolean;
   sponsorship_group_link: string | null;
   adopted: boolean;
+  sponsorship_pair_id?: number;
 }

@@ -23,7 +23,6 @@ export async function getPetsforSponsorship(): Promise<IPet[]> {
   const { data, error } = await supabase
     .from("pets_info")
     .select("*")
-    .eq("adopted", false)
     .eq("need_sponsorship", true);
 
   if (error) {
@@ -82,7 +81,6 @@ export async function getPetsforSponsorshipHomepage(): Promise<IPet[]> {
   const { data, error } = await supabase
     .from("pets_info")
     .select("*")
-    .eq("adopted", false)
     .eq("need_sponsorship", true)
     .limit(5);
 
