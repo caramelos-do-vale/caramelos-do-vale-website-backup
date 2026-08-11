@@ -3,7 +3,6 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Tag } from "@/components/ui/Tag";
 import { Suspense } from "react";
 import { ProductsForShop } from "./ProductsForShop";
-import { ShopSkeleton } from "@/components/layout/Skeleton/ShopSkeleton";
 import { ProductGridSkeleton } from "@/components/layout/Skeleton/ProductGridSkeleton";
 
 export function Shop() {
@@ -27,7 +26,9 @@ export function Shop() {
               Leve a <span className="text-yellow">Caramelos</span> com você
             </h2>
 
-            <ButtonLink href="/shop">Visite nossa loja</ButtonLink>
+            <ButtonLink href="/shop" className="h-fit">
+              Visite nossa loja
+            </ButtonLink>
           </div>
         </div>
         <Suspense fallback={<ProductGridSkeleton />}>
