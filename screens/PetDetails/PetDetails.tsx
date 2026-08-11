@@ -46,16 +46,33 @@ export function PetDetails({ pet }: IPetDetails) {
         </div>
       </dl>
       <p className="text-muted text-base md:text-lg">{pet.description}</p>
-      <ButtonLink
-        href={mainInfo.whatsapp}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Quero adotar ${pet.pet_name} pelo WhatsApp`}
-        size="lg"
-        onClick={handleClick}
-      >
-        Quero adotar {pet.pet_name}
-      </ButtonLink>
+      <div className="flex gap-3">
+        {!pet.adopted && (
+          <ButtonLink
+            href={mainInfo.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Quero adotar ${pet.pet_name} pelo WhatsApp`}
+            size="lg"
+            onClick={handleClick}
+          >
+            Quero adotar {pet.pet_name}
+          </ButtonLink>
+        )}
+        {pet.need_sponsorship && (
+          <ButtonLink
+            href={pet.sponsorship_group_link!}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Quero apadrinhar ${pet.pet_name} pelo WhatsApp`}
+            variant="secondary"
+            size="lg"
+            onClick={handleClick}
+          >
+            Quero apadrinhar {pet.pet_name}
+          </ButtonLink>
+        )}
+      </div>
     </div>
   );
 }

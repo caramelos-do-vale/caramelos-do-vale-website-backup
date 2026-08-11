@@ -6,9 +6,14 @@ import { trackEvent } from "@/analytics";
 interface ISponsorshipButton {
   petId: number;
   petName: string;
+  petGroupLink: string;
 }
 
-export function SponsorshipButton({ petId, petName }: ISponsorshipButton) {
+export function SponsorshipButton({
+  petId,
+  petName,
+  petGroupLink,
+}: ISponsorshipButton) {
   function handleClick() {
     trackEvent("click_sponsorship", {
       pet_id: petId,
@@ -18,11 +23,13 @@ export function SponsorshipButton({ petId, petName }: ISponsorshipButton) {
 
   return (
     <ButtonLink
-      href={`/pets/${petId}`}
+      href={petGroupLink}
       size="sm"
       variant="dark"
       className="w-fit"
       onClick={handleClick}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       Apadrinhar
     </ButtonLink>

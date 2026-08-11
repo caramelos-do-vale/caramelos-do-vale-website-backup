@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SponsorshipButton } from "./SponsorshipButton";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { mainInfo } from "@/constants/mainInfo";
 
 export async function PetsForSponsorship() {
   const pets = await getPetsforSponsorshipHomepage();
@@ -28,8 +29,10 @@ export async function PetsForSponsorship() {
         className="relative h-72 sm:h-80"
       >
         <Link
-          href={`/pets/${featuredPet.pet_id}`}
+          href={featuredPet.sponsorship_group_link!}
           aria-label={`Conheça ${featuredPet.pet_name}`}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <figure className="absolute top-0 left-0 z-20 h-64 w-56 overflow-hidden rounded-3xl shadow-[rgba(26,46,56,0.25)_0px_12px_40px] sm:h-72 sm:w-64">
             <Image
@@ -55,8 +58,10 @@ export async function PetsForSponsorship() {
 
         {secondaryPet && (
           <Link
-            href={`/pets/${secondaryPet.pet_id}`}
+            href={secondaryPet.sponsorship_group_link!}
             aria-label={`Conheça ${secondaryPet.pet_name}`}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <figure className="border-yellow absolute top-8 left-40 z-30 h-52 w-44 overflow-hidden rounded-3xl border-[3px] shadow-[rgba(26,46,56,0.2)_0px_8px_30px] sm:left-48 sm:h-56 sm:w-48">
               <Image
@@ -112,10 +117,10 @@ export async function PetsForSponsorship() {
                       {pet.gender === "f" ? "Fêmea" : "Macho"} · {pet.age}
                     </p>
                   </div>
-
                   <SponsorshipButton
                     petId={pet.pet_id}
                     petName={pet.pet_name}
+                    petGroupLink={pet.sponsorship_group_link!}
                   />
                 </div>
               </li>
@@ -124,12 +129,18 @@ export async function PetsForSponsorship() {
         )}
 
         <div className="flex flex-col gap-3 md:flex-row">
-          <ButtonLink href="/sponsorship" className="w-fit" variant="dark">
+          <ButtonLink
+            href={mainInfo.communityWhatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-fit"
+            variant="dark"
+          >
             Quero apadrinhar
           </ButtonLink>
 
           <ButtonLink
-            href="/pets"
+            href="/sponsorship"
             className="w-fit"
             variant="dark"
             appearance="outline"

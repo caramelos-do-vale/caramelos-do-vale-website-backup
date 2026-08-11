@@ -7,4 +7,6 @@ export interface IPet {
   size: string;
   description: string;
   need_sponsorship: boolean;
+  sponsorship_group_link: string | null;
+  adopted: boolean;
 }

@@ -6,6 +6,7 @@ import { navbarItems } from "./navbarItems";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "../Container";
 import { usePathname } from "next/navigation";
+import { mainInfo } from "@/constants/mainInfo";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -48,13 +49,13 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-yellow bg-warm-white/97 shadow-[rgba(26,46,56,0.08)_0px_2px_20px]">
-      <Container className="h-15 grid grid-cols-[1fr_auto_auto] items-center gap-4 md:h-16 md:flex md:justify-between">
+    <header className="border-yellow bg-warm-white/97 fixed top-0 right-0 left-0 z-50 border-b-2 shadow-[rgba(26,46,56,0.08)_0px_2px_20px]">
+      <Container className="grid h-15 grid-cols-[1fr_auto_auto] items-center gap-4 md:flex md:h-16 md:justify-between">
         <Link
           href="/"
           aria-label="Caramelos do Vale — página inicial"
           onClick={closeMenu}
-          className="shrink-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow"
+          className="focus-visible:outline-yellow shrink-0 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4"
         >
           <Image
             src="/caramelos_do_vale_logo.png"
@@ -70,9 +71,9 @@ export function Navbar() {
               <li key={item.label}>
                 <Link
                   href={item.url}
-                  className={`block rounded-xl px-3 py-1.5 text-sm font-bold transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow ${
+                  className={`focus-visible:outline-yellow block rounded-xl px-3 py-1.5 text-sm font-bold transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 ${
                     pathname === item.url
-                      ? "bg-blue text-white shadow-md shadow-blue/20 scale-[1.01]"
+                      ? "bg-blue shadow-blue/20 scale-[1.01] text-white shadow-md"
                       : "text-dark hover:bg-dark/5 hover:text-blue hover:scale-[1.01]"
                   }`}
                 >
@@ -82,7 +83,12 @@ export function Navbar() {
             ))}
           </ul>
         </nav>
-        <ButtonLink href="/sponsorship" variant="secondary" size="sm">
+        <ButtonLink
+          href={mainInfo.communityWhatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          size="sm"
+        >
           Apadrinhe
         </ButtonLink>
         <button
@@ -91,7 +97,7 @@ export function Navbar() {
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
           aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-          className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-lg text-dark transition-colors hover:bg-dark/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow md:hidden"
+          className="text-dark hover:bg-dark/5 focus-visible:outline-yellow flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
         >
           <span
             aria-hidden="true"
@@ -118,7 +124,7 @@ export function Navbar() {
 
       <div
         id="mobile-navigation"
-        className={`overflow-hidden border-t border-dark/10 bg-warm-white transition-[max-height,opacity] duration-300 ease-in-out md:hidden ${
+        className={`border-dark/10 bg-warm-white overflow-hidden border-t transition-[max-height,opacity] duration-300 ease-in-out md:hidden ${
           isMenuOpen
             ? "max-h-125 opacity-100"
             : "pointer-events-none max-h-0 opacity-0"
@@ -135,7 +141,7 @@ export function Navbar() {
                 <Link
                   href={item.url}
                   onClick={closeMenu}
-                  className="block rounded-xl px-4 py-3 text-sm font-bold text-dark transition-colors hover:bg-dark/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow"
+                  className="text-dark hover:bg-dark/5 focus-visible:outline-yellow block rounded-xl px-4 py-3 text-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
                   {item.label}
                 </Link>

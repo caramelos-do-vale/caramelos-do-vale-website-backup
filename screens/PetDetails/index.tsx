@@ -6,12 +6,17 @@ import { PetMainImages } from "./PetMainImages";
 import { PetDetails } from "./PetDetails";
 import { PetImageGallery } from "./PetImageGallery";
 import { EmptyState } from "@/components/layout/EmptyState";
+import { PetOriginProps } from "@/type/PetOrigin";
 
 interface IPetDetailsPage {
   petId: number;
+  origin?: PetOriginProps;
 }
 
-export async function PetDetailsPage({ petId }: IPetDetailsPage) {
+export async function PetDetailsPage({
+  petId,
+  origin = "adoption",
+}: IPetDetailsPage) {
   const pet = await getPetById(petId);
 
   if (!pet) {
@@ -31,26 +36,34 @@ export async function PetDetailsPage({ petId }: IPetDetailsPage) {
       <section aria-labelledby="pet-name">
         <Container className="flex flex-col gap-3 pt-4 pb-16">
           <ButtonLink
-            href="/pets"
+            href={origin === "sponsorship" ? "/sponsorship" : "/pets"}
             variant="secondary"
             appearance="ghost"
             icon={<MoveLeftIcon size={14} aria-hidden="true" />}
             iconPosition="left"
             className="w-fit"
           >
-            Voltar para os pets
+            Voltar para {origin === "sponsorship" ? "apadrinhamento" : "pets"}
           </ButtonLink>
           <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:gap-16">
-            <PetMainImages images={images} petName={pet.pet_name} />
+            <PetMainImages
+              images={images}
+              petName={pet.pet_name}
+              petProfileImg={pet.profile_img}
+            />
             <PetDetails pet={pet} />
           </div>
         </Container>
       </section>
-      <PetImageGallery
-        images={images}
-        petName={pet.pet_name}
-        petGender={pet.gender}
-      />
+      {images.length ? (
+        <PetImageGallery
+          images={images}
+          petName={pet.pet_name}
+          petGender={pet.gender}
+        />
+      ) : (
+        <></>
+      )}
     </>
   );
 }

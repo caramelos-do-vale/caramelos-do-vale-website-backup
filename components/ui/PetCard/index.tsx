@@ -3,45 +3,19 @@ import Link from "next/link";
 import { Heart, MoveRight } from "lucide-react";
 import { Tag } from "@/components/ui/Tag";
 import { IPet } from "@/type/Pet";
-import { ButtonLink } from "../ButtonLink";
 
 interface IPetCard {
   pet: IPet;
   mode?: "adoption" | "sponsorship";
 }
 
-export function PetCard({ pet }: IPetCard) {
+export function PetCard({ pet, mode = "adoption" }: IPetCard) {
   return (
-    <article
-      className="
-        group
-        flex
-        flex-col
-        overflow-hidden
-        rounded-3xl
-        bg-white
-        shadow-[0_4px_24px_rgba(26,46,56,0.12)]
-        transition-[transform,box-shadow]
-        duration-300
-        ease-out
-        hover:-translate-y-1
-        hover:shadow-[0_10px_32px_rgba(26,46,56,0.18)]
-        motion-reduce:transition-none
-        motion-reduce:hover:transform-none
-      "
-    >
+    <article className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-[0_4px_24px_rgba(26,46,56,0.12)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_10px_32px_rgba(26,46,56,0.18)] motion-reduce:transition-none motion-reduce:hover:transform-none">
       <Link
-        href={`/pets/${pet.pet_id}`}
+        href={`/pets/${pet.pet_id}?from=${mode}`}
         aria-label={`Conhecer ${pet.pet_name}`}
-        className="
-          flex
-          h-full
-          flex-col
-          rounded-3xl
-          focus-visible:outline-2
-          focus-visible:outline-offset-4
-          focus-visible:outline-yellow
-        "
+        className="focus-visible:outline-yellow flex h-full flex-col rounded-3xl focus-visible:outline-2 focus-visible:outline-offset-4"
       >
         <div className="relative aspect-4/3 overflow-hidden">
           <Image
@@ -53,38 +27,15 @@ export function PetCard({ pet }: IPetCard) {
               (max-width: 1279px) 50vw,
               33vw
             "
-            className="
-              object-cover
-              transition-transform
-              duration-500
-              ease-out
-              group-hover:scale-105
-              motion-reduce:transition-none
-              motion-reduce:group-hover:scale-100
-            "
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
-
-          <span
-            className="
-              absolute
-              top-4
-              right-4
-              rounded-full
-              bg-dark/70
-              px-3
-              py-1
-              text-xs
-              font-bold
-              text-white
-              backdrop-blur-sm
-            "
-          >
+          <span className="bg-dark/70 absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-bold text-white backdrop-blur-sm">
             {pet.gender === "f" ? "Fêmea" : "Macho"}
           </span>
         </div>
 
-        <div className="flex flex-1 flex-col p-6 gap-4">
-          <h3 className="text-3xl font-black leading-tight text-dark">
+        <div className="flex flex-1 flex-col gap-4 p-6">
+          <h3 className="text-dark text-3xl leading-tight font-black">
             {pet.pet_name}
           </h3>
 
@@ -103,27 +54,12 @@ export function PetCard({ pet }: IPetCard) {
           </div>
 
           {pet.description && (
-            <p className="line-clamp-2 text-sm leading-relaxed text-muted">
+            <p className="text-muted line-clamp-2 text-sm leading-relaxed">
               {pet.description}
             </p>
           )}
 
-          <span
-            className="
-              inline-flex
-              items-center
-              justify-center
-              gap-2
-              rounded-xl
-              bg-yellow
-              shadow-[0_4px_14px_rgba(234,183,74,0.35)] 
-              hover:shadow-[0_6px_18px_rgba(234,183,74,0.45)]
-              px-6
-              py-3
-              text-sm
-              font-bold
-            "
-          >
+          <span className="bg-yellow inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold shadow-[0_4px_14px_rgba(234,183,74,0.35)] hover:shadow-[0_6px_18px_rgba(234,183,74,0.45)]">
             Conhecer {pet.pet_name}
             <MoveRight aria-hidden="true" size={18} />
           </span>
