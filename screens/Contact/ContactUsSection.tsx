@@ -10,7 +10,7 @@ function Content({ item }: { item: ContactUsItemProps }) {
   return (
     <>
       <span aria-hidden="true">{item.icon}</span>
-      <h3 className="text-xl font-black ">{item.title}</h3>
+      <h3 className="text-xl font-black">{item.title}</h3>
       <p className="-mb-3 text-sm">{item.description}</p>
     </>
   );
@@ -71,7 +71,7 @@ export function ContactUsSection() {
               >
                 <Content item={item} />
                 <p
-                  className={`font-black text-sm text-yellow flex gap-1 mt-3 ${variantStyle[item.variant as ColorVariantProps].cta}`}
+                  className={`text-yellow mt-3 flex items-center gap-1 text-sm font-black ${variantStyle[item.variant as ColorVariantProps].cta}`}
                 >
                   {copied ? (
                     "Copiado!"
@@ -94,7 +94,7 @@ export function ContactUsSection() {
               >
                 <Content item={item} />
                 <p
-                  className={`font-black text-sm flex gap-1 mt-3 ${variantStyle[item.variant as ColorVariantProps].cta}`}
+                  className={`mt-3 flex items-center gap-1 text-sm font-black ${variantStyle[item.variant as ColorVariantProps].cta}`}
                 >
                   {item.cta.label}{" "}
                   <MoveRightIcon size={14} aria-hidden="true" />
