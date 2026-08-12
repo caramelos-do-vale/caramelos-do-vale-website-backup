@@ -15,7 +15,7 @@ export const contactUsItems: ContactUsItemProps[] = [
   {
     variant: "primary",
     icon: (
-      <span className="h-14 w-14 flex items-center justify-center rounded-2xl bg-[#25d366] p-2">
+      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#25d366] p-2">
         <FaWhatsapp aria-hidden="true" className="text-2xl text-white" />
       </span>
     ),
@@ -27,7 +27,7 @@ export const contactUsItems: ContactUsItemProps[] = [
   {
     variant: "dark",
     icon: (
-      <span className="h-14 w-14 flex items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgb(245,133,41),rgb(221,42,123),rgb(129,52,175))] p-2">
+      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgb(245,133,41),rgb(221,42,123),rgb(129,52,175))] p-2">
         <FaInstagram aria-hidden="true" className="text-2xl text-white" />
       </span>
     ),
@@ -43,13 +43,12 @@ export const contactUsItems: ContactUsItemProps[] = [
   {
     variant: "secondary",
     icon: (
-      <span className="h-14 w-14 flex items-center justify-center rounded-2xl bg-white/20 p-2">
+      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 p-2">
         <Mail aria-hidden="true" size={24} className="text-white" />
       </span>
     ),
     title: "E-mail",
-    description:
-      "Acompanhe o dia a dia dos animais, histórias e novidades. Também respondemos mensagens por lá.",
+    description: "Para parcerias, imprensa e outras questões mais formais.",
     cta: {
       label: "caramelosdovale@gmail.com",
       href: mainInfo.mail,
