@@ -78,7 +78,7 @@ export function ProductsSection({ products }: IProductsSection) {
           >
             Mostrando{" "}
             <strong className="text-dark">{filteredProducts.length}</strong>{" "}
-            {filteredProducts.length === 1 ? "animal" : "animais"}
+            {filteredProducts.length === 1 ? "produto" : "produtos"}
           </p>
         </div>
         {filteredProducts.length === 0 ? (

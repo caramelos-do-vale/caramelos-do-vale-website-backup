@@ -22,7 +22,7 @@ export function WhereItGoes() {
               <Card
                 variant="light"
                 {...item}
-                className="items-center text-center!"
+                className="h-full items-center text-center!"
               />
             </li>
           ))}

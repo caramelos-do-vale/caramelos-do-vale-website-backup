@@ -21,10 +21,6 @@ export async function SponsorshipPage() {
           </>
         }
         description="Nem todo encontro precisa terminar em adoção para transformar uma vida. Escolha um animal e faça parte da história dele — mesmo sem levá-lo para casa."
-        cta={{
-          href: "#available-pet-sponsorship",
-          label: "Escolher um animal",
-        }}
         details={
           <span
             aria-hidden="true"

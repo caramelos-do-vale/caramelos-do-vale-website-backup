@@ -4,7 +4,10 @@ import { IProduct } from "@/type/Product";
 export async function getProducts(): Promise<IProduct[]> {
   const supabase = await createClient();
 
-  const { data, error } = await supabase.from("products").select("*");
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .order("available", { ascending: false });
 
   if (error) {
     throw new Error("Failed to fetch products");
