@@ -66,17 +66,17 @@ export function ImgBanner({
     >
       {details && <div aria-hidden="true">{details}</div>}
       <Container
-        className={`relative py-16 flex flex-col gap-12 items-center md:grid md:grid-cols-2`}
+        className={`relative flex flex-col items-center gap-12 py-16 md:grid md:grid-cols-2`}
       >
         {imgPosition === "left" && img}
         <div className="flex flex-col gap-6">
           {tag && <Tag variant={variantStyle[variant].tag}>{tag}</Tag>}
-          <h2 className="text-3xl md:text-4xl font-black">{title}</h2>
+          <h2 className="text-3xl font-black md:text-4xl">{title}</h2>
           <div className="flex flex-col gap-4">
             {paragraphs.map((paragraph, index) => (
               <p
                 key={`paragraph_${index}`}
-                className={`mx-auto max-w-sm md:max-w-3xl ${variantStyle[variant].description}`}
+                className={`max-w-sm md:max-w-3xl ${variantStyle[variant].description}`}
               >
                 {paragraph}
               </p>
