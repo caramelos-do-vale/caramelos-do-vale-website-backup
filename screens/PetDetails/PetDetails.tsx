@@ -23,7 +23,6 @@ export function PetDetails({ pet, petPair }: IPetDetails) {
 
   return (
     <div className="flex flex-col gap-5">
-      <Tag>Disponível para adoção</Tag>
       <h1 className="text-5xl font-black md:text-6xl" id="pet-name">
         {pet.pet_name}
       </h1>
