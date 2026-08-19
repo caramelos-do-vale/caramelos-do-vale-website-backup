@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors */
+  --color-yellow: #eab74a;
+  --color-yellow-light: #fdf5d8;
+  --color-yellow-muted: #f5d98a;
+  --color-yellow-dark: #c8962a;
+  --color-yellow-deep: #8a6518;
+
+  --color-blue: #1e95b3;
+  --color-blue-light: #e0f5fa;
+  --color-blue-muted: #8dd2e5;
+  --color-blue-dark: #155f73;
+  --color-blue-deep: #0d3d4a;
+
+  /* Neutrals */
+  --color-dark: #1a2e38;
+  --color-text: #1a2e38;
+  --color-muted: #5a7c8a;
+  --color-light: #f9fdfe;
+  --color-warm-white: #fffef8;
+  --color-border: #d4eaf0;
+
+  /* Status */
+  --color-available: #16a34a;
+  --color-care: #d97706;
+  --color-sponsored: #6366f1;
+
+  --font-display: "Nunito", "Arial Rounded MT Bold", sans-serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-warm-white);
+  color: var(--color-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}
+
+button {
+  cursor: pointer;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+*:hover {
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* Organic blob shape utility */
+.blob-1 {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+.blob-2 {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+.blob-3 {
+  border-radius: 50% 50% 30% 70% / 40% 60% 40% 60%;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

@@ -1,10 +1,98 @@
-# caramelos-do-vale-website
+# Caramelos do Vale 🐾
 
-# React + Vite
+Site institucional da Associação Caramelos do Vale, uma organização que resgata e cuida de cães abandonados no Campus do Vale da UFRGS.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O projeto tem como objetivo modernizar a presença digital da associação, facilitar a divulgação dos animais, incentivar adoções e apadrinhamentos, além de centralizar informações sobre projetos, loja, voluntariado e formas de apoio.
 
-Currently, two official plugins are available:
+## 🌐 Links
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Site oficial: https://www.caramelosdovale.com.br/
+- Dashboard no Vercel: https://vercel.com/caramelos-do-vales-projects/caramelos-do-vale-website-backup
+
+## 🚀 Tecnologias
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Supabase
+- Ant Design
+- Cloudinary
+
+## 📦 Instalação
+
+Clone o projeto:
+
+```bash
+git clone <repository-url>
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+## ⚙️ Variáveis de ambiente
+
+Crie um arquivo .env.local na raiz do projeto:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+```
+
+## ▶️ Rodando localmente
+
+Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Acesse:
+
+http://localhost:3000
+
+## 📁 Estrutura do projeto
+
+```bash
+src/
+├── app/              # Rotas e páginas (App Router)
+├── components/       # Componentes reutilizáveis
+├── constants/        # Informações fixas da aplicação
+├── services/         # Integrações com APIs e banco
+├── types/            # Tipagens globais
+└── utils/            # Funções auxiliares
+```
+
+## 🐶 Sobre a Caramelos do Vale
+
+A Associação Caramelos do Vale atua no resgate e cuidado de cães abandonados no Campus do Vale da UFRGS.
+
+Desde 2025, a associação também é um Projeto de Extensão da universidade, conectando estudantes, voluntários e a comunidade em uma rede de cuidado animal.
+
+O site busca apoiar as principais frentes da organização:
+
+- 🏠 Adoção de animais
+- 💛 Apadrinhamento
+- 🎓 Projeto de extensão
+- 📚 Sebo solidário
+- 🛍️ Loja da associação
+- 🤝 Voluntariado e doações
+
+## 🧑‍💻 Desenvolvimento
+
+### Padrões utilizados
+
+- Componentização com React
+- Tipagem com TypeScript
+- Server Components quando possível
+- Componentes reutilizáveis para UI
+- Tailwind para estilização
+
+## 🚢 Deploy
+
+O projeto está publicado utilizando a plataforma Vercel.
+
+Alterações na branch principal são automaticamente publicadas no ambiente de produção.
