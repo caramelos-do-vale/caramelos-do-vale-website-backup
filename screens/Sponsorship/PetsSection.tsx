@@ -20,17 +20,17 @@ interface IPetsSection {
 
 export function PetsSection({ pets }: IPetsSection) {
   function buildSponsorshipItems(pets: IPet[]): SponsorshipItem[] {
-    const processedPets = new Set<number>();
+    const processedPets = new Set<string>();
     const items: SponsorshipItem[] = [];
 
     for (const animal of pets) {
-      if (processedPets.has(animal.pet_id)) {
+      if (processedPets.has(animal.id)) {
         continue;
       }
 
-      if (animal.sponsorship_pair_id) {
+      if (animal.tutorship?.otherPet) {
         const partner = pets.find(
-          (pet) => pet.pet_id === animal.sponsorship_pair_id,
+          (pet) => pet.id === animal.tutorship?.otherPet?.id,
         );
 
         if (partner) {
@@ -39,8 +39,8 @@ export function PetsSection({ pets }: IPetsSection) {
             pets: [animal, partner],
           });
 
-          processedPets.add(animal.pet_id);
-          processedPets.add(partner.pet_id);
+          processedPets.add(animal.id);
+          processedPets.add(partner.id);
 
           continue;
         }
@@ -51,7 +51,7 @@ export function PetsSection({ pets }: IPetsSection) {
         pet: animal,
       });
 
-      processedPets.add(animal.pet_id);
+      processedPets.add(animal.id);
     }
 
     return items;
@@ -83,15 +83,13 @@ export function PetsSection({ pets }: IPetsSection) {
             {sponsorshipItems.map((item) => {
               if (item.type === "pair") {
                 return (
-                  <li
-                    key={`pair-${item.pets[0].pet_id}-${item.pets[1].pet_id}`}
-                  >
+                  <li key={`pair-${item.pets[0].id}-${item.pets[1].id}`}>
                     <SponsorshipPairCard pets={item.pets} />
                   </li>
                 );
               }
               return (
-                <li key={`pet-${item.pet.pet_id}`}>
+                <li key={`pet-${item.pet.id}`}>
                   <PetCard pet={item.pet} mode="sponsorship" />
                 </li>
               );

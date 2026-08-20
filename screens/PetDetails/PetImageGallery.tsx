@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
-import { IPetImage } from "@/type/PetImage";
 import { Container } from "@/components/layout/Container";
+import { IPetImage, PetGender } from "@/type/Pet";
 
 interface IPetImageGallery {
   images: IPetImage[];
-  petGender: "f" | "m";
+  petGender: PetGender;
   petName: string;
 }
 
@@ -18,7 +18,7 @@ export function PetImageGallery({
     <section className="bg-dark" id="pet-gallery">
       <Container className="flex flex-col gap-10 py-16">
         <h2 className="text-3xl font-black text-white md:text-4xl">
-          Galeria {petGender === "f" ? "da" : "do"} {petName}
+          Galeria {petGender === "FEMALE" ? "da" : "do"} {petName}
         </h2>
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {images.map((image, index) => (
@@ -27,7 +27,7 @@ export function PetImageGallery({
               className="relative aspect-3/4 overflow-hidden rounded-2xl"
             >
               <Image
-                src={image.link}
+                src={image.url}
                 alt={`Foto ${index + 1} de ${petName}`}
                 fill
                 className="object-cover"

@@ -1,15 +1,19 @@
 import { EmptyState } from "@/components/layout/EmptyState";
-import { getPetsforSponsorshipHomepage } from "@/services/pets";
+import { getPets } from "@/services/pets";
 import Image from "next/image";
 import Link from "next/link";
 import { SponsorshipButton } from "./SponsorshipButton";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { mainInfo } from "@/constants/mainInfo";
+import { calculatePetAge } from "@/utils/calculatePetAge";
 
 export async function PetsForSponsorship() {
-  const pets = await getPetsforSponsorshipHomepage();
+  const pets = await getPets({
+    limit: 5,
+    needsSponsorship: true,
+  });
 
-  if (!pets.length) {
+  if (!pets.data.length) {
     return (
       <EmptyState
         icon="🐾"
@@ -19,8 +23,8 @@ export async function PetsForSponsorship() {
     );
   }
 
-  const [featuredPet, secondaryPet] = pets;
-  const listPets = pets.slice(2, 5);
+  const [featuredPet, secondaryPet] = pets.data;
+  const listPets = pets.data.slice(2, 5);
 
   return (
     <div className="grid gap-8 md:grid-cols-2 md:items-end">
@@ -29,15 +33,15 @@ export async function PetsForSponsorship() {
         className="relative h-72 sm:h-80"
       >
         <Link
-          href={featuredPet.sponsorship_group_link!}
-          aria-label={`Conheça ${featuredPet.pet_name}`}
+          href={featuredPet.tutorship!.whatsappGroupUrl}
+          aria-label={`Conheça ${featuredPet.name}`}
           target="_blank"
           rel="noopener noreferrer"
         >
           <figure className="absolute top-0 left-0 z-20 h-64 w-56 overflow-hidden rounded-3xl shadow-[rgba(26,46,56,0.25)_0px_12px_40px] sm:h-72 sm:w-64">
             <Image
-              src={featuredPet.profile_img}
-              alt={`Foto de ${featuredPet.pet_name}`}
+              src={featuredPet.coverImage!.url}
+              alt={`Foto de ${featuredPet.name}`}
               fill
               sizes="(max-width: 640px) 224px, 256px"
               className="object-cover"
@@ -45,12 +49,12 @@ export async function PetsForSponsorship() {
 
             <figcaption className="from-dark/80 absolute right-0 bottom-0 left-0 bg-linear-to-t to-transparent p-4 pt-10">
               <p className="text-sm font-black text-white">
-                {featuredPet.pet_name}
+                {featuredPet.name}
               </p>
 
               <p className="text-xs text-white/70">
-                {featuredPet.gender === "f" ? "Fêmea" : "Macho"} ·{" "}
-                {featuredPet.age}
+                {featuredPet.gender === "FEMALE" ? "Fêmea" : "Macho"} ·{" "}
+                {calculatePetAge(featuredPet.birthDate)}
               </p>
             </figcaption>
           </figure>
@@ -58,15 +62,15 @@ export async function PetsForSponsorship() {
 
         {secondaryPet && (
           <Link
-            href={secondaryPet.sponsorship_group_link!}
-            aria-label={`Conheça ${secondaryPet.pet_name}`}
+            href={secondaryPet.tutorship!.whatsappGroupUrl}
+            aria-label={`Conheça ${secondaryPet.name}`}
             target="_blank"
             rel="noopener noreferrer"
           >
             <figure className="border-yellow absolute top-8 left-40 z-30 h-52 w-44 overflow-hidden rounded-3xl border-[3px] shadow-[rgba(26,46,56,0.2)_0px_8px_30px] sm:left-48 sm:h-56 sm:w-48">
               <Image
-                src={secondaryPet.profile_img}
-                alt={`Foto de ${secondaryPet.pet_name}`}
+                src={secondaryPet.coverImage!.url}
+                alt={`Foto de ${secondaryPet.name}`}
                 fill
                 sizes="(max-width: 640px) 176px, 192px"
                 className="object-cover"
@@ -74,7 +78,7 @@ export async function PetsForSponsorship() {
 
               <figcaption className="from-dark/80 absolute right-0 bottom-0 left-0 bg-linear-to-t to-transparent p-3 pt-8">
                 <p className="text-sm font-black text-white">
-                  {secondaryPet.pet_name}
+                  {secondaryPet.name}
                 </p>
               </figcaption>
             </figure>
@@ -98,12 +102,12 @@ export async function PetsForSponsorship() {
             className="flex flex-col gap-3"
           >
             {listPets.map((pet) => (
-              <li key={pet.pet_id}>
+              <li key={pet.id}>
                 <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-2xl bg-white/60 p-3.5 shadow-[rgba(26,46,56,0.1)_0px_2px_12px]">
                   <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl">
                     <Image
-                      src={pet.profile_img}
-                      alt={`Foto de ${pet.pet_name}`}
+                      src={pet.coverImage!.url}
+                      alt={`Foto de ${pet.name}`}
                       fill
                       sizes="56px"
                       className="object-cover"
@@ -111,16 +115,17 @@ export async function PetsForSponsorship() {
                   </div>
 
                   <div className="flex flex-col">
-                    <p className="text-sm font-bold">{pet.pet_name}</p>
+                    <p className="text-sm font-bold">{pet.name}</p>
 
                     <p className="text-xs text-[#3d1f00]/60">
-                      {pet.gender === "f" ? "Fêmea" : "Macho"} · {pet.age}
+                      {pet.gender === "FEMALE" ? "Fêmea" : "Macho"} ·{" "}
+                      {calculatePetAge(featuredPet.birthDate)}
                     </p>
                   </div>
                   <SponsorshipButton
-                    petId={pet.pet_id}
-                    petName={pet.pet_name}
-                    petGroupLink={pet.sponsorship_group_link!}
+                    petId={pet.id}
+                    petName={pet.name}
+                    petGroupLink={pet.tutorship!.whatsappGroupUrl}
                   />
                 </div>
               </li>

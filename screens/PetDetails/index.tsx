@@ -1,4 +1,4 @@
-import { getPetById, getPetImages } from "@/services/pets";
+import { getPetById } from "@/services/pets";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { MoveLeftIcon } from "lucide-react";
@@ -9,7 +9,7 @@ import { EmptyState } from "@/components/layout/EmptyState";
 import { PetOriginProps } from "@/type/PetOrigin";
 
 interface IPetDetailsPage {
-  petId: number;
+  petId: string;
   origin?: PetOriginProps;
 }
 
@@ -29,11 +29,10 @@ export async function PetDetailsPage({
     );
   }
 
-  const images = await getPetImages(petId);
-
-  const petPair = pet.sponsorship_pair_id
-    ? await getPetById(pet.sponsorship_pair_id)
-    : null;
+  const petPair =
+    pet.tutorship && pet.tutorship?.otherPet && pet.tutorship?.otherPet.id
+      ? await getPetById(pet.tutorship?.otherPet.id)
+      : null;
 
   return (
     <>
@@ -51,18 +50,18 @@ export async function PetDetailsPage({
           </ButtonLink>
           <div className="flex flex-col gap-10 md:grid md:grid-cols-2 md:gap-16">
             <PetMainImages
-              images={images}
-              petName={pet.pet_name}
-              petProfileImg={pet.profile_img}
+              images={pet.gallery}
+              petName={pet.name}
+              petProfileImg={pet.coverImage?.url || ""}
             />
             <PetDetails pet={pet} petPair={petPair} />
           </div>
         </Container>
       </section>
-      {images.length ? (
+      {pet.gallery?.length ? (
         <PetImageGallery
-          images={images}
-          petName={pet.pet_name}
+          images={pet.gallery}
+          petName={pet.name}
           petGender={pet.gender}
         />
       ) : (

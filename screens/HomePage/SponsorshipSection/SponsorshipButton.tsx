@@ -4,7 +4,7 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { trackEvent } from "@/analytics";
 
 interface ISponsorshipButton {
-  petId: number;
+  petId: string;
   petName: string;
   petGroupLink: string;
 }

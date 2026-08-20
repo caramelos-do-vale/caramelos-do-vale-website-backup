@@ -2,7 +2,6 @@ import { CTABanner } from "@/components/layout/CTABanner";
 import { PageHero } from "@/components/layout/PageHero";
 import { mainInfo } from "@/constants/mainInfo";
 import { Suspense } from "react";
-import { ProductGridSkeleton } from "@/components/layout/Skeleton/ProductGridSkeleton";
 import { ProductsContent } from "./ProductContent";
 import { ShopSkeleton } from "@/components/layout/Skeleton/ShopSkeleton";
 

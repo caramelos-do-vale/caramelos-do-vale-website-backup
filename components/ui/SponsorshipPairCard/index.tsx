@@ -13,49 +13,46 @@ export function SponsorshipPairCard({ pets }: ISponsorshipPairCard) {
   const [firstPet, secondPet] = pets;
 
   const sponsorshipLink =
-    firstPet.sponsorship_group_link ?? secondPet.sponsorship_group_link;
+    firstPet.tutorship?.whatsappGroupUrl ??
+    secondPet.tutorship?.whatsappGroupUrl;
 
   return (
     <article className="group bg-dark flex flex-col overflow-hidden rounded-3xl shadow-[0_4px_24px_rgba(26,46,56,0.12)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_10px_32px_rgba(26,46,56,0.18)] motion-reduce:transition-none motion-reduce:hover:transform-none">
       <div className="relative aspect-4/3 overflow-hidden">
         <div className="grid h-full grid-cols-2">
           <Link
-            href={`/pets/${firstPet.pet_id}?from=sponsorship`}
-            aria-label={`Conhecer ${firstPet.pet_name}`}
+            href={`/pets/${firstPet.id}?from=sponsorship`}
+            aria-label={`Conhecer ${firstPet.name}`}
             className="focus-visible:outline-yellow relative overflow-hidden focus-visible:z-10 focus-visible:outline-2 focus-visible:-outline-offset-2"
           >
             <Image
-              src={firstPet.profile_img}
-              alt={`Foto de ${firstPet.pet_name}`}
+              src={firstPet.coverImage?.url || ""}
+              alt={`Foto de ${firstPet.name}`}
               fill
               sizes="(max-width: 768px) 50vw, 25vw"
               className="object-cover transition-transform duration-500 ease-out group-hover:scale-103"
             />
 
             <div className="from-dark/70 absolute inset-x-0 bottom-0 bg-linear-to-t to-transparent p-3 pt-10">
-              <p className="text-sm font-black text-white">
-                {firstPet.pet_name}
-              </p>
+              <p className="text-sm font-black text-white">{firstPet.name}</p>
             </div>
           </Link>
 
           <Link
-            href={`/pets/${secondPet.pet_id}?from=sponsorship`}
-            aria-label={`Conhecer ${secondPet.pet_name}`}
+            href={`/pets/${secondPet.id}?from=sponsorship`}
+            aria-label={`Conhecer ${secondPet.name}`}
             className="focus-visible:outline-yellow relative overflow-hidden focus-visible:z-10 focus-visible:outline-2 focus-visible:-outline-offset-2"
           >
             <Image
-              src={secondPet.profile_img}
-              alt={`Foto de ${secondPet.pet_name}`}
+              src={secondPet.coverImage?.url || ""}
+              alt={`Foto de ${secondPet.name}`}
               fill
               sizes="(max-width: 768px) 50vw, 25vw"
               className="object-cover transition-transform duration-500 group-hover:scale-103"
             />
 
             <div className="from-dark/70 absolute inset-x-0 bottom-0 bg-linear-to-t to-transparent p-3 pt-10 text-right">
-              <p className="text-sm font-black text-white">
-                {secondPet.pet_name}
-              </p>
+              <p className="text-sm font-black text-white">{secondPet.name}</p>
             </div>
           </Link>
         </div>
@@ -72,7 +69,7 @@ export function SponsorshipPairCard({ pets }: ISponsorshipPairCard) {
       <div className="flex flex-col gap-4 p-5">
         <div>
           <h3 className="text-xl font-black text-white">
-            {firstPet.pet_name} & {secondPet.pet_name}
+            {firstPet.name} & {secondPet.name}
           </h3>
 
           <p className="text-sm leading-relaxed text-white/70">
@@ -84,17 +81,17 @@ export function SponsorshipPairCard({ pets }: ISponsorshipPairCard) {
         </p>
         <div className="grid grid-cols-2 gap-2">
           <ButtonLink
-            href={`/pets/${firstPet.pet_id}?from=sponsorship`}
+            href={`/pets/${firstPet.id}?from=sponsorship`}
             appearance="outline"
           >
-            Ver {firstPet.pet_name}
+            Ver {firstPet.name}
           </ButtonLink>
 
           <ButtonLink
-            href={`/pets/${secondPet.pet_id}?from=sponsorship`}
+            href={`/pets/${secondPet.id}?from=sponsorship`}
             appearance="outline"
           >
-            Ver {secondPet.pet_name}
+            Ver {secondPet.name}
           </ButtonLink>
         </div>
         {sponsorshipLink ? (
@@ -107,7 +104,7 @@ export function SponsorshipPairCard({ pets }: ISponsorshipPairCard) {
             <MoveRight aria-hidden="true" size={18} />
           </ButtonLink>
         ) : (
-          <ButtonLink href={`/pets/${firstPet.pet_id}?from=sponsorship`}>
+          <ButtonLink href={`/pets/${firstPet.id}?from=sponsorship`}>
             Apadrinhar a dupla
             <MoveRight aria-hidden="true" size={18} />
           </ButtonLink>

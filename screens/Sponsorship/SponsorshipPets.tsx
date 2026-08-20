@@ -1,11 +1,14 @@
 import { EmptyState } from "@/components/layout/EmptyState";
-import { getPetsforSponsorship } from "@/services/pets";
 import { PetsSection } from "./PetsSection";
+import { getPets } from "@/services/pets";
 
 export async function SponsorshipPets() {
-  const animals = await getPetsforSponsorship();
+  const pets = await getPets({
+    limit: 100,
+    needsSponsorship: true,
+  });
 
-  if (!animals.length) {
+  if (!pets.data.length) {
     return (
       <EmptyState
         icon="💛"
@@ -15,5 +18,5 @@ export async function SponsorshipPets() {
     );
   }
 
-  return <PetsSection pets={animals} />;
+  return <PetsSection pets={pets.data} />;
 }

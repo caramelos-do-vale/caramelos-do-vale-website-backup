@@ -1,11 +1,14 @@
 import { EmptyState } from "@/components/layout/EmptyState";
 import { ProductCard } from "@/components/ui/ProductCard";
-import { getProductsForHomepage } from "@/services/products";
+import { getProducts } from "@/services/products";
 
 export async function ProductsForShop() {
-  const products = await getProductsForHomepage();
+  const products = await getProducts({
+    active: true,
+    limit: 3,
+  });
 
-  if (!products.length) {
+  if (!products.data.length) {
     return (
       <EmptyState
         icon="🛍️"
@@ -20,7 +23,7 @@ export async function ProductsForShop() {
       aria-label="Produtos em destaque"
       className="flex flex-col gap-5 md:grid md:grid-cols-3"
     >
-      {products.map((product, index) => (
+      {products.data.map((product, index) => (
         <li key={product.id}>
           <ProductCard
             product={product}

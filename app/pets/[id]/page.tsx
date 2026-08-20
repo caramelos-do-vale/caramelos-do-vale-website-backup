@@ -17,5 +17,5 @@ export default async function Page({
   const { id } = await params;
   const { from } = await searchParams;
 
-  return <PetDetailsPage petId={Number(id)} origin={from} />;
+  return <PetDetailsPage petId={id} origin={from} />;
 }

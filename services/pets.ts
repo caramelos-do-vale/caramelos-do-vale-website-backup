@@ -1,92 +1,62 @@
-import { createClient } from "@/lib/supabase/server";
-import { IPet } from "@/type/Pet";
-import { IPetImage } from "@/type/PetImage";
+import { api } from "./api";
+import { IPet, PetGender, PetSize, PetsResponse, PetStatus } from "@/type/Pet";
 
-export async function getPetsForAdoption(): Promise<IPet[]> {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase
-    .from("pets_info")
-    .select("*")
-    .eq("adopted", false);
-
-  if (error) {
-    throw new Error("Failed to fetch pets");
-  }
-
-  return data;
+export interface ListPetsParams {
+  behaviourId?: string[];
+  status?: PetStatus[];
+  size?: PetSize[];
+  gender?: PetGender;
+  search?: string;
+  sort?: string;
+  limit?: number;
+  page?: number;
+  needsSponsorship?: boolean;
 }
 
-export async function getPetsforSponsorship(): Promise<IPet[]> {
-  const supabase = await createClient();
+export async function getPets(params?: ListPetsParams): Promise<PetsResponse> {
+  const searchParams = new URLSearchParams();
 
-  const { data, error } = await supabase
-    .from("pets_info")
-    .select("*")
-    .eq("need_sponsorship", true);
-
-  if (error) {
-    throw new Error("Failed to fetch pets");
+  if (params?.behaviourId?.length) {
+    searchParams.set("behaviourId", params.behaviourId.join(","));
   }
 
-  return data;
+  if (params?.status?.length) {
+    searchParams.set("status", params.status.join(","));
+  }
+
+  if (params?.size?.length) {
+    searchParams.set("size", params.size.join(","));
+  }
+
+  if (params?.gender) {
+    searchParams.set("gender", params.gender);
+  }
+
+  if (params?.search) {
+    searchParams.set("search", params.search);
+  }
+
+  if (params?.sort) {
+    searchParams.set("sort", params.sort);
+  }
+
+  if (params?.limit !== undefined) {
+    searchParams.set("limit", String(params.limit));
+  }
+
+  if (params?.page !== undefined) {
+    searchParams.set("page", String(params.page));
+  }
+
+  if (params?.needsSponsorship !== undefined) {
+    searchParams.set("needsSponsorship", String(params.needsSponsorship));
+  }
+
+  const query = searchParams.toString();
+
+  return api<PetsResponse>(`/public/pets${query ? `?${query}` : ""}`);
 }
 
-export async function getPetById(id: number): Promise<IPet> {
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("pets_info")
-    .select("*")
-    .eq("pet_id", id)
-    .single();
-  if (error) {
-    throw new Error("Failed to fetch pet");
-  }
-  return data;
-}
-
-export async function getPetImages(petId: number): Promise<IPetImage[]> {
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("images_links")
-    .select("*")
-    .eq("pet_id", petId)
-    .order("profile_photo", { ascending: false });
-
-  if (error) {
-    throw new Error("Failed to fetch pet");
-  }
-  return data;
-}
-
-export async function getPetsforAdoptionHomepage(): Promise<IPet[]> {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase
-    .from("pets_info")
-    .select("*")
-    .eq("adopted", false)
-    .limit(5);
-
-  if (error) {
-    throw new Error("Failed to fetch pets");
-  }
-
-  return data;
-}
-
-export async function getPetsforSponsorshipHomepage(): Promise<IPet[]> {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase
-    .from("pets_info")
-    .select("*")
-    .eq("need_sponsorship", true)
-    .limit(5);
-
-  if (error) {
-    throw new Error("Failed to fetch pets");
-  }
-
-  return data;
+export async function getPetById(id: string): Promise<IPet> {
+  return api<IPet>(`/public/pets/${id}`);
 }

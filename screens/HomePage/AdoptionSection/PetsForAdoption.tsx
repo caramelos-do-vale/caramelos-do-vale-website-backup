@@ -1,26 +1,31 @@
 import { EmptyState } from "@/components/layout/EmptyState";
-import { getPetsforAdoptionHomepage } from "@/services/pets";
+import { getPets } from "@/services/pets";
+import { calculatePetAge } from "@/utils/calculatePetAge";
 import Image from "next/image";
 import Link from "next/link";
 
 export async function PetsForAdoption() {
-  const pets = await getPetsforAdoptionHomepage();
+  const pets = await getPets({
+    status: ["AVAILABLE"],
+    limit: 5,
+  });
+
   return (
     <>
-      {pets.length ? (
+      {pets.data.length ? (
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {pets.map((pet, index) => (
+          {pets.data.map((pet, index) => (
             <li
-              key={pet.pet_id}
+              key={pet.id}
               className={`${index === 0 ? "col-span-2 row-span-2" : ""}`}
             >
               <Link
-                href={`/pets/${pet.pet_id}`}
+                href={`/pets/${pet.id}`}
                 className="group relative flex aspect-square overflow-hidden rounded-3xl md:aspect-4/3"
               >
                 <Image
-                  src={pet.profile_img}
-                  alt={`Foto de ${pet.pet_name}`}
+                  src={pet.coverImage?.url || ""}
+                  alt={`Foto de ${pet.name}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -31,9 +36,10 @@ export async function PetsForAdoption() {
                 />
 
                 <div className="relative mt-auto w-full p-5 text-white">
-                  <p className="text-2xl font-bold">{pet.pet_name}</p>
+                  <p className="text-2xl font-bold">{pet.name}</p>
                   <p className="text-sm text-white/80">
-                    {pet.gender === "f" ? "Fêmea" : "Macho"} · {pet.age}
+                    {pet.gender === "FEMALE" ? "Fêmea" : "Macho"} ·{" "}
+                    {calculatePetAge(pet.birthDate)}
                   </p>
                 </div>
               </Link>

@@ -6,12 +6,13 @@ import { PetCard } from "@/components/ui/PetCard";
 import { Select } from "@/components/ui/Select";
 import { IPet } from "@/type/Pet";
 import { EmptyState } from "@/components/layout/EmptyState";
+import { calculatePetAge } from "@/utils/calculatePetAge";
 
 interface IAvailablePetsSection {
-  animals: IPet[];
+  pets: IPet[];
 }
 
-export function AvailablePetsSection({ animals }: IAvailablePetsSection) {
+export function AvailablePetsSection({ pets }: IAvailablePetsSection) {
   const [search, setSearch] = useState("");
 
   const [filters, setFilters] = useState({
@@ -21,39 +22,39 @@ export function AvailablePetsSection({ animals }: IAvailablePetsSection) {
   });
 
   const sizeOptions = useMemo(
-    () => [
-      "Todos",
-      ...new Set(animals.map((animal) => animal.size).filter(Boolean)),
-    ],
-    [animals],
+    () => ["Todos", ...new Set(pets.map((pet) => pet.size).filter(Boolean))],
+    [pets],
   );
 
   const ageOptions = useMemo(
     () => [
       "Todos",
-      ...new Set(animals.map((animal) => animal.age).filter(Boolean)),
+      ...new Set(
+        pets.map((pet) => calculatePetAge(pet.birthDate)).filter(Boolean),
+      ),
     ],
-    [animals],
+    [pets],
   );
 
   const filteredAnimals = useMemo(() => {
-    return animals.filter((animal) => {
-      const matchesSearch = animal.pet_name
+    return pets.filter((pet) => {
+      const matchesSearch = pet.name
         .toLowerCase()
         .includes(search.toLowerCase().trim());
 
-      const matchesSize =
-        filters.size === "Todos" || animal.size === filters.size;
+      const matchesSize = filters.size === "Todos" || pet.size === filters.size;
 
       const matchesGender =
         filters.gender === "Todos" ||
-        animal.gender?.toLowerCase() === filters.gender.toLowerCase();
+        pet.gender?.toLowerCase() === filters.gender.toLowerCase();
 
-      const matchesAge = filters.age === "Todos" || animal.age === filters.age;
+      const matchesAge =
+        filters.age === "Todos" ||
+        calculatePetAge(pet.birthDate) === filters.age;
 
       return matchesSearch && matchesSize && matchesGender && matchesAge;
     });
-  }, [animals, filters, search]);
+  }, [pets, filters, search]);
 
   return (
     <section aria-labelledby="available-pets-title">
@@ -144,9 +145,9 @@ export function AvailablePetsSection({ animals }: IAvailablePetsSection) {
         </div>
         {filteredAnimals.length ? (
           <ul className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {filteredAnimals.map((animal) => (
-              <li key={animal.pet_id}>
-                <PetCard pet={animal} />
+            {filteredAnimals.map((pet) => (
+              <li key={pet.id}>
+                <PetCard pet={pet} />
               </li>
             ))}
           </ul>

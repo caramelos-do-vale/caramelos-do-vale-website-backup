@@ -1,11 +1,15 @@
-import { getPetsForAdoption } from "@/services/pets";
+import { getPets } from "@/services/pets";
 import { AvailablePetsSection } from "./AvailablePetsSection";
 import { EmptyState } from "@/components/layout/EmptyState";
 
 export async function AvailablePetsContent() {
-  const pets = await getPetsForAdoption();
+  const pets = await getPets({
+    status: ["AVAILABLE"],
+    limit: 100,
+  });
 
-  if (!pets.length) {
+  console.log(pets);
+  if (!pets.data.length) {
     return (
       <EmptyState
         icon="🐶"
@@ -15,5 +19,5 @@ export async function AvailablePetsContent() {
     );
   }
 
-  return <AvailablePetsSection animals={pets} />;
+  return <AvailablePetsSection pets={pets.data} />;
 }

@@ -5,7 +5,7 @@ import { ProductsSection } from "./ProductsSection";
 export async function ProductsContent() {
   const products = await getProducts();
 
-  if (!products.length) {
+  if (!products.data.length) {
     return (
       <EmptyState
         icon="🛍️"
@@ -15,5 +15,5 @@ export async function ProductsContent() {
     );
   }
 
-  return <ProductsSection products={products} />;
+  return <ProductsSection products={products.data} />;
 }

@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Tag } from "@/components/ui/Tag";
 import { mainInfo } from "@/constants/mainInfo";
 import { IPet } from "@/type/Pet";
+import { calculatePetAge } from "@/utils/calculatePetAge";
 import { PlusIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,21 +17,21 @@ interface IPetDetails {
 export function PetDetails({ pet, petPair }: IPetDetails) {
   function handleClick() {
     trackEvent("click_adoption", {
-      pet_id: pet.pet_id,
-      pet_name: pet.pet_name,
+      pet_id: pet.id,
+      pet_name: pet.name,
     });
   }
 
   return (
     <div className="flex flex-col gap-5">
       <h1 className="text-5xl font-black md:text-6xl" id="pet-name">
-        {pet.pet_name}
+        {pet.name}
       </h1>
       <dl className="flex flex-wrap gap-2">
         <div>
           <dt className="sr-only">Idade</dt>
           <dd>
-            <Tag variant="blue">{pet.age}</Tag>
+            <Tag variant="blue">{calculatePetAge(pet.birthDate)}</Tag>
           </dd>
         </div>
 
@@ -45,7 +46,7 @@ export function PetDetails({ pet, petPair }: IPetDetails) {
           <dt className="sr-only">Sexo</dt>
           <dd>
             <Tag variant="dark-transparent">
-              {pet.gender === "f" ? "Fêmea" : "Macho"}
+              {pet.gender === "FEMALE" ? "Fêmea" : "Macho"}
             </Tag>
           </dd>
         </div>
@@ -53,14 +54,14 @@ export function PetDetails({ pet, petPair }: IPetDetails) {
       <p className="text-muted text-base md:text-lg">{pet.description}</p>
       {petPair && (
         <Link
-          href={`/pets/${petPair.pet_id}?from=sponsorship`}
+          href={`/pets/${petPair.id}?from=sponsorship`}
           className="bg-yellow-light border-yellow text-yellow-deep flex items-center gap-4 rounded-2xl border p-4"
         >
           <div className="relative">
             <div className="relative h-24 w-24">
               <Image
-                src={petPair.profile_img}
-                alt={`Foto de ${pet.pet_name}`}
+                src={petPair.coverImage?.url || ""}
+                alt={`Foto de ${pet.name}`}
                 fill
                 className="border-yellow rounded-full border-3 object-cover"
               />
@@ -75,37 +76,37 @@ export function PetDetails({ pet, petPair }: IPetDetails) {
               Dupla inseparável
             </h3>
             <p className="text-sm">
-              Ao apadrinhar {pet.pet_name}, você também apoia{" "}
-              <b className="underline">{petPair.pet_name}</b>. Sua contribuição
+              Ao apadrinhar {pet.name}, você também apoia{" "}
+              <b className="underline">{petPair.name}</b>. Sua contribuição
               cuida dos dois.
             </p>
           </div>
         </Link>
       )}
       <div className="flex gap-3">
-        {!pet.adopted && (
+        {pet.status === "AVAILABLE" && (
           <ButtonLink
             href={mainInfo.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Quero adotar ${pet.pet_name} pelo WhatsApp`}
+            aria-label={`Quero adotar ${pet.name} pelo WhatsApp`}
             size="lg"
             onClick={handleClick}
           >
-            Quero adotar {pet.pet_name}
+            Quero adotar {pet.name}
           </ButtonLink>
         )}
-        {pet.need_sponsorship && (
+        {pet.needsSponsorship && (
           <ButtonLink
-            href={pet.sponsorship_group_link!}
+            href={pet.tutorship!.whatsappGroupUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Quero apadrinhar ${pet.pet_name} pelo WhatsApp`}
+            aria-label={`Quero apadrinhar ${pet.name} pelo WhatsApp`}
             variant="secondary"
             size="lg"
             onClick={handleClick}
           >
-            Quero apadrinhar {pet.pet_name}
+            Quero apadrinhar {pet.name}
           </ButtonLink>
         )}
       </div>
