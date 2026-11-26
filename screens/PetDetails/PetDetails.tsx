@@ -98,7 +98,7 @@ export function PetDetails({ pet, petPair }: IPetDetails) {
         )}
         {pet.needsSponsorship && (
           <ButtonLink
-            href={pet.tutorship!.whatsappGroupUrl}
+            href={pet.tutorship?.whatsappGroupUrl || "#"}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Quero apadrinhar ${pet.name} pelo WhatsApp`}

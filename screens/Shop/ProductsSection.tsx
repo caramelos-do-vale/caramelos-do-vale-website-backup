@@ -1,6 +1,6 @@
 "use client";
 import { Search } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { ISelectOption, Select } from "@/components/ui/Select";
@@ -32,6 +32,10 @@ export function ProductsSection({ products }: IProductsSection) {
       return matchesType && matchesSearch;
     });
   }, [products, selectedType, search]);
+
+  useEffect(() => {
+    console.log(products);
+  }, []);
 
   return (
     <section aria-labelledby="products-title">

@@ -33,14 +33,16 @@ export async function PetsForSponsorship() {
         className="relative h-72 sm:h-80"
       >
         <Link
-          href={featuredPet.tutorship!.whatsappGroupUrl}
+          href={
+            featuredPet.tutorship ? featuredPet.tutorship.whatsappGroupUrl : "#"
+          }
           aria-label={`Conheça ${featuredPet.name}`}
           target="_blank"
           rel="noopener noreferrer"
         >
           <figure className="absolute top-0 left-0 z-20 h-64 w-56 overflow-hidden rounded-3xl shadow-[rgba(26,46,56,0.25)_0px_12px_40px] sm:h-72 sm:w-64">
             <Image
-              src={featuredPet.coverImage!.url}
+              src={featuredPet.coverImage?.url || ""}
               alt={`Foto de ${featuredPet.name}`}
               fill
               sizes="(max-width: 640px) 224px, 256px"
@@ -62,14 +64,18 @@ export async function PetsForSponsorship() {
 
         {secondaryPet && (
           <Link
-            href={secondaryPet.tutorship!.whatsappGroupUrl}
+            href={
+              secondaryPet.tutorship
+                ? secondaryPet.tutorship.whatsappGroupUrl
+                : "#"
+            }
             aria-label={`Conheça ${secondaryPet.name}`}
             target="_blank"
             rel="noopener noreferrer"
           >
             <figure className="border-yellow absolute top-8 left-40 z-30 h-52 w-44 overflow-hidden rounded-3xl border-[3px] shadow-[rgba(26,46,56,0.2)_0px_8px_30px] sm:left-48 sm:h-56 sm:w-48">
               <Image
-                src={secondaryPet.coverImage!.url}
+                src={secondaryPet.coverImage?.url || ""}
                 alt={`Foto de ${secondaryPet.name}`}
                 fill
                 sizes="(max-width: 640px) 176px, 192px"
@@ -106,7 +112,7 @@ export async function PetsForSponsorship() {
                 <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-2xl bg-white/60 p-3.5 shadow-[rgba(26,46,56,0.1)_0px_2px_12px]">
                   <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl">
                     <Image
-                      src={pet.coverImage!.url}
+                      src={pet.coverImage?.url || ""}
                       alt={`Foto de ${pet.name}`}
                       fill
                       sizes="56px"
@@ -125,7 +131,7 @@ export async function PetsForSponsorship() {
                   <SponsorshipButton
                     petId={pet.id}
                     petName={pet.name}
-                    petGroupLink={pet.tutorship!.whatsappGroupUrl}
+                    petGroupLink={pet.tutorship?.whatsappGroupUrl || "#"}
                   />
                 </div>
               </li>

@@ -22,7 +22,7 @@ export function Select({ id, label, value, options, onChange }: ISelect) {
   const selectedOption = options.find((option) => option.value === value);
 
   function capitalize(text: string) {
-    return text.charAt(0).toUpperCase() + text.slice(1);
+    return text?.charAt(0).toUpperCase() + text?.slice(1);
   }
 
   useEffect(() => {
