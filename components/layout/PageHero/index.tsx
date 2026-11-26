@@ -11,7 +11,7 @@ interface IPageHero {
   tag: string;
   title: React.ReactNode;
   description?: string;
-  cta?: CTAProps;
+  cta?: CTAProps[];
   img?: React.ReactNode;
 }
 
@@ -62,12 +62,12 @@ export function PageHero({
     >
       {details}
       <Container
-        className={`relative py-12 flex flex-col gap-12 md:items-center ${img ? "md:grid md:grid-cols-2" : "md:flex-row"}`}
+        className={`relative flex flex-col gap-12 py-12 md:items-center ${img ? "md:grid md:grid-cols-2" : "md:flex-row"}`}
       >
         <div className="flex flex-col gap-5">
           <Tag variant={variantStyle[variant].tag}>{tag}</Tag>
           <h1
-            className="text-4xl font-black leading-tight md:text-6xl md:max-w-155"
+            className="text-4xl leading-tight font-black md:max-w-155 md:text-6xl"
             id={titleId}
           >
             {title}
@@ -80,17 +80,21 @@ export function PageHero({
             </p>
           )}
           {cta && (
-            <div className="mt-2">
-              <ButtonLink
-                href={cta.href}
-                {...(cta.external && {
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                })}
-                variant={variantStyle[variant].button}
-              >
-                {cta.label}
-              </ButtonLink>
+            <div className="mt-2 flex flex-col gap-3 md:flex-row">
+              {cta.map((ctaItem, index) => (
+                <ButtonLink
+                  key={index}
+                  href={ctaItem.href}
+                  {...(ctaItem.external && {
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  })}
+                  variant={variantStyle[variant].button}
+                  appearance={index % 2 === 0 ? "solid" : "outline"}
+                >
+                  {ctaItem.label}
+                </ButtonLink>
+              ))}
             </div>
           )}
         </div>
