@@ -16,11 +16,13 @@ export function BookstorePage() {
           </>
         }
         description="Uma livraria com alma. O Sebo da Caramelos é uma iniciativa para arrecadar fundos para os cães — 100% dos valores são destinados aos animais sob cuidados da associação."
-        cta={{
-          label: "Acessar o Instagram do Sebo",
-          href: mainInfo.bookstoreInstagram.href,
-          external: true,
-        }}
+        cta={[
+          {
+            label: "Acessar o Instagram do Sebo",
+            href: mainInfo.bookstoreInstagram.href,
+            external: true,
+          },
+        ]}
         img={
           <div className="relative h-95 w-full max-w-105">
             <div className="absolute top-0 left-0 h-72 w-56 -rotate-6 overflow-hidden rounded-2xl shadow-[rgba(0,0,0,0.3)_0px_8px_30px]">

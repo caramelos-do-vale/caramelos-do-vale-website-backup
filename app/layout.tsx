@@ -27,7 +27,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
+      data-scroll-behavior="smooth"
       className={`${nunito.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">

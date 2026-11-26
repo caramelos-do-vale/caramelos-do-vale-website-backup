@@ -27,7 +27,7 @@ export function Footer() {
               src="/caramelos_do_vale_logo_white.png"
               alt=""
               width={97}
-              height={40}
+              height={97}
               priority={false}
             />
           </Link>

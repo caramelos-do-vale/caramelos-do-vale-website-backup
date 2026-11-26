@@ -12,7 +12,7 @@ export function ExtensionPage() {
         details={
           <span
             aria-hidden="true"
-            className="absolute top-0 right-0 w-96 h-96 opacity-10 blob-1 bg-dark"
+            className="blob-1 bg-dark absolute top-0 right-0 h-96 w-96 opacity-10"
           ></span>
         }
         tag="🎓 UFRGS · Desde 2025"
@@ -22,11 +22,18 @@ export function ExtensionPage() {
           </>
         }
         description="Você é aluno da UFRGS, ama os animais e ainda precisa de horas de extensão? Aqui, você transforma horas de extensão em impacto real na vida de cãezinhos resgatados."
-        cta={{
-          label: "Acessar o edital",
-          href: mainInfo.publicNotice,
-          external: true,
-        }}
+        cta={[
+          {
+            label: "Acessar o edital",
+            href: mainInfo.publicNotice,
+            external: true,
+          },
+          {
+            label: "Ler cartilha dos cães universitários",
+            href: "cartilha_extensao_caramelos_do_vale.pdf",
+            external: true,
+          },
+        ]}
         img={
           <div className="relative h-90 w-full max-w-120">
             <div className="blob-2 relative h-full w-full overflow-hidden shadow-[rgba(26,46,56,0.2)_0px_12px_50px]">
@@ -46,7 +53,7 @@ export function ExtensionPage() {
         details={
           <span
             aria-hidden="true"
-            className="absolute -right-20 -top-20 w-72 h-72 opacity-10 blob-1 bg-yellow"
+            className="blob-1 bg-yellow absolute -top-20 -right-20 h-72 w-72 opacity-10"
           ></span>
         }
         variant="secondary"
